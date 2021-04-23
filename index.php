@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "connect.php";
-$req = mysqli_query($conn,"SELECT * FROM food");
+$req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,7 @@ $req = mysqli_query($conn,"SELECT * FROM food");
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
 	<link rel="stylesheet" href="style.css">
 	<title>Restaurant</title>
 </head>
@@ -99,9 +100,11 @@ $req = mysqli_query($conn,"SELECT * FROM food");
 	<div class="repas">
 		<div class="head">
 			<h1>Nos Menus</h1>
-			<a href="#">Voir Plus &nbsp; &#x2794;</a>
+			<a href="menu.php">Voir Plus &nbsp; &#x2794;</a>
 		</div>
 		<div class="menu-container">
+			<div class="owl-carousel">
+
 			<?php 
 				while($tab = mysqli_fetch_row($req))
 				{
@@ -118,7 +121,7 @@ $req = mysqli_query($conn,"SELECT * FROM food");
 				}
 
 			?>
-			
+			</div>
 		</div>
 	</div>
 	<div class="gallery">
@@ -162,6 +165,8 @@ $req = mysqli_query($conn,"SELECT * FROM food");
 			</div>		
 		</div>
 	</div>
-	<script src="js/main.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/main.js"></script>	
 </body>
 </html>

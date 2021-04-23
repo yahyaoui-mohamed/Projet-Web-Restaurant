@@ -20,7 +20,7 @@ include "connect.php";
 			$prenom = $_POST["prenom"];
 			$email  = $_POST["email"];
 			$mdp    = $_POST["mdp"];
-			$query = mysqli_query($conn, "INSERT INTO users VALUES ('','$nom','$prenom','$email','$mdp','','')");
+			$query = mysqli_query($conn, "INSERT INTO users VALUES ('','$nom','$prenom','$email','$mdp','','',0)");
 			echo "<div class='alert-success'>Compte créer avec succès. Vous pouvez maintenant <a href='login.php'>S'identifier</a></div>";
 		}
 		?>

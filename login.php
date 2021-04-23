@@ -20,9 +20,16 @@ include "connect.php";
 			$mdp    = $_POST["mdp"];
 			$query  = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' AND mdp = '$mdp'");
 			$result = mysqli_fetch_row($query);
+
 			if(mysqli_num_rows($query) == 0)
 			{
 				echo "<div class='alert-danger'>Email ou mot de passe invalide!</div>";
+			}
+			else if(mysqli_num_rows($query) == 1 && $result[7] == 1)
+			{
+				session_start();
+				$_SESSION["admin"]  = $email;
+				header("location:admin.php");	
 			}
 			else
 			{

@@ -44,11 +44,21 @@ $result = mysqli_fetch_row($query);
 							$email  = $_POST["email"];
 							$tel    = $_POST["tel"];
 							$file   = $_FILES["img"];
-							$filelocation = $_FILES["img"]["tmp_name"];
-							$destination = "img/users/".$_FILES["img"]["name"];
-							move_uploaded_file($_FILES["img"]["tmp_name"], $destination);
-							$query  = mysqli_query($conn,"
-							UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel', profile_image = '$destination' WHERE email = '$_SESSION[user]'");				
+							if($file !== "")
+							{
+								$filelocation = $_FILES["img"]["tmp_name"];
+								$destination = "img/users/".$_FILES["img"]["name"];
+								move_uploaded_file($_FILES["img"]["tmp_name"], $destination);								
+								$query  = mysqli_query($conn,"
+								UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel', profile_image = '$destination' WHERE email = '$_SESSION[user]'");
+							}
+							else
+							{
+								$query  = mysqli_query($conn,"
+								UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel' WHERE email = '$_SESSION[user]'");
+							}
+
+											
 						}
 
 					?>

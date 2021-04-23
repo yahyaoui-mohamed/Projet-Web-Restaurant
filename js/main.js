@@ -72,3 +72,12 @@ scrollTop.onclick = function(e){
 	e.preventDefault();
 	scrollTo({top: 0, behavior:"smooth"});
 }
+
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+  	loop:true,
+  	margin:60,
+  	center:true,
+  	nav:true
+  });
+});
