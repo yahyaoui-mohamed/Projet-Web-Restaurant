@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+	--main-color:#fe5f41;
+}
+
+*{
+	box-sizing:border-box;
+}
+
+body{
+	margin:0;
+}
+
+#scroll-top{
+	position:fixed;
+	bottom:15px;
+	right:15px;
+	background-color:#fe5f41ab;
+	color:#fff;
+	width:50px;
+	height:50px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	text-decoration:none;
+	font-size:30px;
+	border-radius:50%;
+	z-index:20;
+	transition:.5s
+}
+
+#scroll-top:hover{
+	background-color:var(--main-color);
+}
+
+.header{
+	display:flex;
+	height:100vh;
+}
+
+.header > div{
+	width:50%;
+	overflow:hidden;
+}
+
+.header .right img{
+	width:100%;
+}
+
+.header .left{
+	background-color:#fff4f2;
+	position:relative;
+}
+
+.header .left .hero{
+	position:absolute;
+	top:40%;
+	left:50%;
+	width:100%;
+	padding:0 50px;
+	transform:translate(-50%,-50%);
+	text-align:center;
+}
+
+.header .left .hero h1{
+	color:#4D312C;
+	font-family:Raleway;
+	font-weight:900;
+	font-size:60px;
+}
+
+.header .left .hero button{
+	outline:none;
+	background-color:var(--main-color);
+	border:none;
+	font-family:Raleway;
+	font-size:20px;
+	color:#fff;
+	padding:10px 40px;
+	font-weight:bold;
+	cursor:pointer;
+	border-radius:50px;
+}
+
+.navbar{
+	padding:20px;
+	display:flex;
+	position:absolute;
+	width:100%;
+	top:0;
+	z-index:8;
+	left:0;
+	transition:.3s;
+
+}
+
+.fixed{
+	background-color:#fff;
+	box-shadow:0 0 11px 0px #ccc;
+	position:fixed;
+	padding:20px;
+}
+
+.navbar .account{
+	right:0;
+	position:absolute;
+	padding-right:30px;
+}
+
+.navbar .account a{
+	margin:0 5px;
+	color:#fff;
+	text-decoration:none;
+	font-family:Raleway;
+	background-color:var(--main-color);
+	padding:5px 15px;
+	border-radius:50px;
+}
+
+.navbar ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+	display:flex;
+	justify-content:space-around;
+	width:50%;
+}
+
+.navbar ul li a{
+	font-family:Raleway;
+	text-decoration:none;
+	color:#000;
+	color:#4d312c;
+	transition:.3s;
+	position:relative;
+}
+
+.navbar ul li a:after{
+	position:absolute;
+	content:"";
+	background-color:var(--main-color);
+	width:0;
+	height:1px;
+	left:0;
+	top:20px;
+	transition:.3s
+}
+
+.navbar ul li:hover a{
+	color:var(--main-color);
+}
+
+.navbar ul li:hover a:after{
+	width:100%;
+}
+
+.about{
+	display:flex;
+	justify-content:space-around;
+	margin:50px 0;
+}
+
+.about .item{
+	width:calc(80% / 3);
+	text-align:center;
+	border:1px solid #eee;
+	padding:60px 20px;
+	font-family:Raleway;
+	border-radius:5px;
+	transition:.3s;
+}
+
+.about .item p{
+	color:#9c9c9c;
+}
+
+.about .item:hover{
+	box-shadow:0 0 15px -3px #ccc;
+	border-color:transparent;
+}
+
+.repas{
+	background:#4e322e;
+	text-align:center;
+	padding:30px;
+	padding-top:50px;
+}
+
+.repas .head h1{
+	margin:0;
+	color:#fff;
+}
+
+.repas .head{
+	display:flex;
+	justify-content:space-between;
+	padding:0px 40px;
+	font-family:Raleway;
+}
+
+.repas .head a{
+	background-color:var(--main-color);
+	text-decoration:none;
+	color:#fff;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	padding:10px 30px;
+	border-radius:50px;
+}
+
+.repas .menu-container{
+	display:flex;
+	flex-wrap:wrap;
+	margin-top:50px;
+	justify-content:space-between;
+}
+
+.repas .menu-item{
+	text-align:center;
+	width:calc(90% / 3);
+	background-color:#fff;
+	position:relative;
+	border-radius:5px;
+	padding:20px 30px;
+	font-family:Raleway;
+	margin-bottom:25px;
+}
+
+.repas .menu-item span{
+	position:absolute;
+	right:30px;
+	top:30px;
+	background-color:var(--main-color);
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	color:#fff;
+	font-weight:bold;
+}
+
+.repas .menu-item p{
+	color:#9c9c9c;
+}
+
+.repas .menu-item a{
+	text-decoration:none;
+	color:#fff;
+	background-color:var(--main-color);
+	padding:10px 30px;
+	display:inline-block;
+	margin:10px 0;
+	border-radius:50px;
+}
+
+.gallery{
+	background-color:#f1f1f1;
+	padding:40px 20px;
+	text-align:center;
+}
+
+.gallery .gallery-container{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around;
+}
+
+.gallery .gallery-container .gallery-item{
+	margin-bottom:20px;
+	position:relative;
+}
+
+.gallery .gallery-container .gallery-item:hover .overlay{
+	opacity:1;
+	visibility:visible;
+}
+
+.gallery .gallery-container .gallery-item .overlay{
+	position:absolute;
+	top:0;
+	left:0;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:100%;
+	height:100%;
+	background-color:rgba(255,255,255,0.7);
+	transition:.3s;
+	opacity:0;
+	visibility:hidden;
+	cursor:pointer;
+}
+
+.gallery .gallery-container .gallery-item .overlay span{
+	font-size:20px;
+}
+
+.gallery h1{
+	margin-bottom:30px;
+	font-size:50px;
+	font-family:Raleway;
+	color:#a7a7a7;
+}
+
+.reserver{
+	padding:20px;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.8);
+	z-index:555;
+	text-align:center;
+	transition:.5s;
+	opacity:0;
+	visibility:hidden;
+}
+
+.reserver h1{
+	font-family:Raleway;
+	margin-bottom:80px;
+}
+
+.reserver form div{
+	margin-bottom:20px;
+}
+
+.reserver form{
+	background-color:#fff;
+	padding:50px 0;
+}
+
+.reserver form input{
+	outline:none;
+	padding:12px 20px;
+	font-size:16px;
+	border:1px solid #eaeaea;
+	border-radius:20px;
+	width:350px;
+	font-family:Raleway;
+	transition:.3s;
+}
+
+.reserver form input:focus{
+	border-color:var(--main-color);;
+}
+
+.reserver form input[type=date]
+{
+	cursor:pointer;
+}
+
+.reserver form input[type=submit]
+{
+	background-color:var(--main-color);
+	border:none;
+	color:#fff;
+	cursor:pointer;
+}
+
+.reserver > span{
+	position:absolute;
+	top:50px;
+	right:30px;
+	width:50px;
+	height:50px;
+	font-size:30px;
+	font-family:Raleway;
+	border-radius:50%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	cursor:pointer;
+	z-index:555;
+}
+
+.reussite{
+	background-color: #fff;
+    font-family: Raleway;
+    position:relative;
+}
+
+.reussite h1{
+	padding:20px;
+	margin-bottom:15px;
+	color:#155724;
+	background-color:#d4edda;
+}
+
+.reussite .info{
+	padding:40px 0;
+}
+
+.reussite .info div{
+	margin:15px 0;
+	text-align:justify;
+	padding-left:80px;
+}
+

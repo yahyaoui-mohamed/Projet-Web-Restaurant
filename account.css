@@ -1,0 +1,116 @@
+*{
+	box-sizing:border-box;
+}
+
+body{
+	margin:0;
+}
+
+.account-wrap{
+	display:flex;
+	height:100vh;
+}
+
+.account-wrap .account-sidebar{
+	width:20%;
+	padding:20px 0;
+	border-right:1px solid #ccc;
+}
+
+.account-wrap .account-sidebar .account-info{
+	text-align:center;
+	padding:20px 0;
+	font-family: Raleway;
+}
+
+.account-wrap .account-sidebar ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+	margin:15px 0;
+}
+
+.account-wrap .account-sidebar ul li.active{
+	background-color:#fe5f41;
+}
+
+.account-wrap .account-sidebar ul li.active a{
+	color:#fff;
+
+}
+
+.account-wrap .account-sidebar ul li{
+	border-bottom:1px solid #ccc;
+}
+
+.account-wrap .account-sidebar ul li a{
+	padding:20px 10px;
+	text-decoration:none;
+	font-family:Raleway;
+	display:inline-block;
+	width:100%;
+	height:100%;	
+	color:#000;
+}
+
+
+.account-wrap .account-sidebar .account-profile-img{
+	background-image:url("https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png");
+	width:80px;
+	height:80px;
+	background-size:contain;
+	margin:auto;
+	margin-bottom:10px;
+	border-radius:50%;
+}
+
+.account-wrap .account-content{
+	width:80%;
+	padding:10px 20px;
+	font-family:Raleway;
+}
+
+.row{
+	display:flex;
+}
+
+.form-group label{
+	display:block;
+	margin-bottom:10px;
+}
+
+.form-group{
+	width:100%;
+	margin-bottom:40px;
+}
+
+.form-group input:not([type=file]){
+	width:80%;
+	outline:none;
+	border:none;
+	border:1px solid #ccc;
+	padding:10px 30px;
+	padding-left:10px;
+	font-family:Raleway;
+}
+
+input[type="submit"]
+{
+	background-color:#fe5f41;
+	text-align:center;
+	border:none;
+	color:#fff;
+	padding:10px 40px;
+	font-family:Raleway;
+	font-size:18px;
+	border-radius:50px;
+	outline:none;
+	cursor:pointer;
+}
+
+input[type="file"]{
+	border:2px dotted #ccc;
+	padding:15px;
+	width:100%;
+	outline:none;
+}
