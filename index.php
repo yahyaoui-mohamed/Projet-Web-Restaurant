@@ -43,7 +43,7 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 	</div>
 		<div class="navbar">
 			<ul>
-				<li><a href="index.php">Home</a></li>
+				<li><a href="./">Home</a></li>
 				<li><a href="#">Menu</a></li>
 				<li><a href="#">About</a></li>
 				<li><a href="#">Contact</a></li>

@@ -1,3 +1,8 @@
+:root{
+
+	--main-color:#fe5f41;
+}
+
 *{
 	box-sizing:border-box;
 }
@@ -15,6 +20,8 @@ body{
 	width:20%;
 	padding:20px 0;
 	border-right:1px solid #ccc;
+	position:fixed;
+	height:100vh;
 }
 
 .account-wrap .account-sidebar .account-info{
@@ -68,6 +75,7 @@ body{
 	width:80%;
 	padding:10px 20px;
 	font-family:Raleway;
+	margin-left:280px;
 }
 
 .row{
@@ -113,4 +121,76 @@ input[type="file"]{
 	padding:15px;
 	width:100%;
 	outline:none;
+}
+
+table{
+	width:100%;
+	padding:5px;
+	text-align:center;
+}
+
+table td,table th{
+	border:1px solid #ccc;
+	padding:15px 5px;
+}
+
+
+table tr:nth-child(odd)
+{
+	background-color:#fe5f41;
+	color:#fff;
+}
+
+.menu-container{
+	display:flex;
+	flex-wrap:wrap;
+	margin-top:100px;
+	justify-content:space-between;
+	padding:20px 60px;
+}
+
+.menu-container .menu-item{
+	text-align:center;
+	width:calc(90% / 3);
+	background-color:#fff;
+	position:relative;
+	border-radius:5px;
+	padding:20px 30px;
+	font-family:Raleway;
+	margin-bottom:25px;
+	box-shadow:0 0 11px 0px #ccc;
+	transition:.3s;
+}
+
+.menu-container .menu-item span{
+	position:absolute;
+	right:30px;
+	top:30px;
+	background-color:var(--main-color);
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	color:#fff;
+	font-weight:bold;
+}
+
+.menu-container .menu-item p{
+	color:#9c9c9c;
+}
+
+.menu-container .menu-item a{
+	text-decoration:none;
+	color:#fff;
+	background-color:var(--main-color);
+	padding:10px 30px;
+	display:inline-block;
+	margin:10px 0;
+	border-radius:50px;
+}
+
+.menu-container .menu-item img{
+	width:100%;
 }
