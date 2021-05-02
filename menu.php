@@ -9,7 +9,8 @@ $req = mysqli_query($conn,"SELECT * FROM `food`");
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+		<link rel="stylesheet" href="css/style.css">
 		<title>Menu</title>
 	</head>
 	<body>
@@ -17,15 +18,28 @@ $req = mysqli_query($conn,"SELECT * FROM `food`");
 	<div class="navbar">
 		<ul>
 			<li><a href="index.php">Home</a></li>
-			<li><a href="#">Menu</a></li>
+			<li><a href="menu.php">Menu</a></li>
 			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="contact.php">Contact</a></li>
 		</ul>
 		<div class="account">
 			<?php 
 			if(isset($_SESSION["user"]))
 			{
 				echo "<a href='account.php'>Compte</a>";
+				echo "<a href='deconnect.php'>Déconnexion</a>";
+				echo "
+					<a href='account.php?tab=commande'>
+						<span href='#' id='shop'>
+						    <span class='shop-count'>0</span>
+							<i class='fas fa-shopping-cart'></i>
+						</span>
+					</a>"
+					;
+			}
+			else if(isset($_SESSION["admin"]))
+			{
+				echo "<a href='admin.php'>Dashboard</a>";
 				echo "<a href='deconnect.php'>Déconnexion</a>";
 			}
 			else{
@@ -42,20 +56,23 @@ $req = mysqli_query($conn,"SELECT * FROM `food`");
 			<?php 
 				while($tab = mysqli_fetch_row($req))
 				{
-					echo
-					"
+					?>
 					<div class='menu-item'>
-						<img src='$tab[4]' alt=''>
-						<span>$tab[2]$</span>
-						<h1>$tab[1]</h1>
-						<p>$tab[3]</p>
-						<a href=commande.php?id=$tab[0]>Commander</a>
+						<img src='<?php echo $tab[4] ?>' alt=''>
+						<span><?php echo $tab[2]?>TND</span>
+						<h1><?php echo $tab[1] ?></h1>
+						<p><?php echo $tab[3] ?></p>
+						<input type="hidden" name="id" value="<?php echo $tab[0]?>">
+						<a href="#" id='commander' class="commande-btn" 
+							<?php if(isset($_SESSION["user"]))echo "data-login='true'"?>>
+						Commander</a>
 					</div>
-					";
+				<?php
 				}
 
 			?>
 		</div>
+		<script src="js/main.js"></script>
 	</body>
 
 </html>

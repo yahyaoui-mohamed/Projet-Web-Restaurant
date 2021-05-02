@@ -1,6 +1,6 @@
 <?php
-include "connect.php";
 session_start();
+include "connect.php";
 $query  = mysqli_query($conn,"SELECT * FROM users WHERE email = '$_SESSION[user]'");
 $result = mysqli_fetch_row($query);
 ?>
@@ -10,7 +10,7 @@ $result = mysqli_fetch_row($query);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="account.css">
+	<link rel="stylesheet" href="css/style.css">
 	<title>Compte</title>
 </head>
 <body>
@@ -25,7 +25,7 @@ $result = mysqli_fetch_row($query);
 				<li <?php if(!isset($_GET["tab"]) || $_GET["tab"] === "compte") echo "class='active'" ?>><a href="?tab=compte">Compte</a></li>
 				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "commande") echo "class='active'" ?>><a href="?tab=commande">Vos commandes</a></li>
 				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "motdepasse") echo "class='active'" ?>><a href="?tab=motdepasse">Changer mot de passe</a></li>
-				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "parametre") echo "class='active'" ?>><a href="?tab=parametre">Paramètres</a></li>
+				<li><a href="index.php">Retour à l'accueil</a></li>
 			</ul>
 		</div>
 		<div class="account-content">
@@ -51,6 +51,7 @@ $result = mysqli_fetch_row($query);
 								move_uploaded_file($_FILES["img"]["tmp_name"], $destination);								
 								$query  = mysqli_query($conn,"
 								UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel', profile_image = '$destination' WHERE email = '$_SESSION[user]'");
+
 							}
 							else
 							{
@@ -130,6 +131,51 @@ $result = mysqli_fetch_row($query);
 					</form>
 					<?php
 				}
+				else if($_GET["tab"] === "commande")
+				{   ?>
+						<h1>Vos Commandes</h1>
+					<?php
+					$query  = mysqli_query($conn, "SELECT * FROM users WHERE email = '$_SESSION[user]'");
+					$id     = mysqli_fetch_row($query)[0];
+					$query1 = mysqli_query($conn, "SELECT * FROM commande WHERE user_id = '$id'");
+					echo "<p>Vous Avez ".mysqli_num_rows($query1)." Commandes.</p>";
+					echo "
+					<table>
+						<thead>
+							<th>Produit</th>
+							<th>Prix</th>
+							<th></th>
+							<th></th>
+						</thead>
+					";
+					while($tab = mysqli_fetch_array($query1))
+					{
+						echo "<tr>";
+						$query2 = mysqli_query($conn, "SELECT * FROM food WHERE food_id = '$tab[1]'");
+						while($tab1 = mysqli_fetch_array($query2))
+						{
+							echo "
+							<td>$tab1[1]</td>
+							<td>$tab1[2]TND</td>
+							<td><img src='$tab1[4]' width=100></td>
+							<td>";
+							if($tab[3] == 1)
+							{
+								echo "Confirmée";
+							}
+							else
+							{
+								echo "<a href='supprimercommande.php?commandeid=$tab[0]'>Supprimer</a> - 
+								<a href='confirmercommande.php?commandeid=$tab[0]'>Confirmer</a>";
+							}
+
+							"</td>";
+						}
+						echo "</tr>";
+					}
+					echo "</table>";
+				}
+
 
 			?>
 

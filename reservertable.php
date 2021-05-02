@@ -8,7 +8,19 @@ $tel = $_GET["tel"];
 $nbr = $_GET["nbr"];
 $date = $_GET["date"];
 
-$query = mysqli_query($conn, "INSERT INTO reservetable values('','$nom','$prenom','$tel','$nbr','$date')");
+$query = mysqli_query($conn, "SELECT * FROM reservetable WHERE date = '$date'");
+
+if(mysqli_num_rows($query) == 1)
+{
+	echo "0";
+}
+else if(strtotime($date) < strtotime(date("Y-m-d")))
+{
+	echo "-1";
+}
+else
+{
+$query1 = mysqli_query($conn, "INSERT INTO reservetable values('','$nom','$prenom','$tel','$nbr','$date','0')");
 
 echo "
 <div class=reussite>
@@ -21,8 +33,6 @@ echo "
 		<div><span>Date :</span> $date</div>
 	</div>
 </div>
-"
-
+";	
+}
 ?>
-
-

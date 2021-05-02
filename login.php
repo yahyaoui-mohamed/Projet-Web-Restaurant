@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION["user"]))
+{
+	header("location:index.php");
+}
 include "connect.php";
 ?>
 <!DOCTYPE html>
@@ -6,7 +11,7 @@ include "connect.php";
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="signup.css">
+	<link rel="stylesheet" href="css/style.css">
 	<title>S'identifier</title>
 </head>
 <body>
@@ -43,10 +48,10 @@ include "connect.php";
 
 	?>
 	<div>
-		<input type="email" placeholder="Email" required name="email">
+		<input type="email" placeholder="Email" required name="email" autocomplete="off">
 	</div>
 	<div>
-		<input type="password" placeholder="Mot de passe" required name="mdp">
+		<input type="password" placeholder="Mot de passe" required name="mdp" autocomplete="off">
 	</div>
 	<div>
 		<input type="submit" value="S'identifier">
