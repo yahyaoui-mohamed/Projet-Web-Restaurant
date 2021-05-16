@@ -24,39 +24,39 @@ $res = mysqli_fetch_row($req);
 			<ul>
 				<li 
 					<?php if(!isset($_GET["tab"]) || $_GET["tab"] === "compte") echo "class='active'" ?>>
-					<a href="?tab=compte">Paramètre du Compte</a>
+					<i class="fas fa-user"></i><a href="?tab=compte">Compte</a>
 				</li>
 
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "utilisateur") echo "class='active'" ?>>
-					<a href="?tab=utilisateur">Gestion d'utilisateur</a>
+					<i class="fas fa-users-cog"></i><a href="?tab=utilisateur">Gestion d'utilisateur</a>
 				</li>
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "commande") echo "class='active'" ?>>
-					<a href="?tab=commande">Gestion de commandes</a>
+					<i class="fas fa-shopping-cart"></i><a href="?tab=commande">Gestion de commandes</a>
 				</li>
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "produit") echo "class='active'" ?>>
-					<a href="?tab=produit">Listes Des Produits</a>
+					<i class="fas fa-list-ul"></i><a href="?tab=produit">Listes Des Produits</a>
 				</li>
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "ajout") echo "class='active'" ?>>
-					<a href="?tab=ajout">Ajouter Des produits</a>
+					<i class="fas fa-plus-circle"></i><a href="?tab=ajout">Ajouter Des produits</a>
 				</li>
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "reservetable") echo "class='active'" ?>>
-					<a href="?tab=reservetable">Reservations des tables</a>
+					<i class="fas fa-calendar"></i><a href="?tab=reservetable">Reservations des tables</a>
 				</li>
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "statistiques") echo "class='active'" ?>>
-					<a href="?tab=statistiques">Statistiques</a>
+					<i class="far fa-chart-bar"></i><a href="?tab=statistiques">Statistiques</a>
 				</li>
 				<li 
 					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "annulercommande") echo "class='active'" ?>>
-					<a href="?tab=annulercommande">Annuler une commande</a>
+					<i class="fas fa-times"></i><a href="?tab=annulercommande">Annuler une commande</a>
 				</li>
 				<li> 
-					<a href="index.php">Retour à l'accueil</a>
+					<i class="fas fa-undo"></i><a href="index.php">Retour à l'accueil</a>
 				</li>
 			</ul>
 		</div>

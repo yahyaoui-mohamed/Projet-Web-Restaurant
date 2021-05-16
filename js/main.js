@@ -21,6 +21,13 @@ let galleryItem     = document.querySelectorAll(".gallery-container .gallery-ite
 let navbar          = document.querySelector(".navbar");
 let scrollTop       = document.getElementById("scroll-top");
 let commande        = document.getElementById('commander');
+let controlBox      = document.querySelector('.control-box');
+let colorBox        = document.querySelector('.color-box');
+let colorItems      = document.querySelectorAll('.color-box ul li');
+let closeBox        = document.querySelector('.color-box span');
+
+if(reserver)
+{
 reserver.onclick = function()
 {
 	reserverContent.style.visibility = "visible";
@@ -33,16 +40,21 @@ reserver.onclick = function()
 			reserverContent.style.opacity = "0";			
 		}
 	}
+}	
 }
 
+if(close)
+{
 close.onclick = function()
 {
 	reserverContent.style.visibility = "hidden";
 	reserverContent.style.opacity = "0";
+}	
 }
 
-
-reserveForm.onsubmit = function(e)
+if(reserveForm)
+{
+	reserveForm.onsubmit = function(e)
 {
 	e.preventDefault();
 	let nom = this.nom.value,
@@ -84,6 +96,9 @@ reserveForm.onsubmit = function(e)
 	xhr.open("GET","reservertable.php?nom="+nom+"&prenom="+prenom+"&tel="+tel+"&nbr="+nbrpersonne+"&date=+"+date,true);
 	xhr.send(nom,prenom,tel,nbrpersonne,date);
 }
+}
+
+
 
 onscroll = function()
 {
@@ -100,11 +115,14 @@ onscroll = function()
 		navbar.classList.remove("fixed");
 	}
 }
-
-scrollTop.onclick = function(e){
-	e.preventDefault();
-	scrollTo({top: 0, behavior:"smooth"});
+if(scrollTop)
+{
+	scrollTop.onclick = function(e){
+		e.preventDefault();
+		scrollTo({top: 0, behavior:"smooth"});
+	}	
 }
+
 
 const swiper = new Swiper('.swiper-container', {
   // Optional parameters
@@ -229,3 +247,32 @@ function nologin()
 	document.body.appendChild(container);
 }
 
+controlBox.onclick = function()
+{
+	this.style.left = "-36px";
+	colorBox.style.left = "0";
+	colorItems.forEach(item => {
+		item.onclick = function()
+		{
+			document.documentElement.style.setProperty("--main-color",this.dataset.color);
+		}
+	});
+	closeBox.onclick = function()
+	{
+	controlBox.style.left = "0";
+	colorBox.style.left = "-45px";
+	}
+}
+
+if (localStorage.length === 0) {
+  localStorage.setItem("mainColor", "#03a9f4");
+  document.documentElement.style.setProperty(
+    "--main-Color",
+    localStorage.getItem("mainColor")
+  );
+} else {
+  document.documentElement.style.setProperty(
+    "--main-Color",
+    localStorage.getItem("mainColor")
+  );
+}

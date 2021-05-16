@@ -13,13 +13,24 @@ $req = mysqli_query($conn,"SELECT * FROM `food`");
 		<link rel="stylesheet" href="css/style.css">
 		<title>Menu</title>
 	</head>
+		<div class="control-box">
+		<i class="fas fa-cog fa-spin"></i>
+	</div>
+	<div class="color-box">
+		<ul>
+			<li data-color="#fe5f41"></li>
+			<li data-color="#08535D"></li>
+			<li data-color="#3a84df"></li>
+			<li data-color="#4d312c"></li>
+		</ul>
+		<span><i class="fas fa-times"></i></span>
+	</div>
 	<body>
 	<a href="#" id="scroll-top">&#8593;</a>
 	<div class="navbar">
 		<ul>
 			<li><a href="index.php">Home</a></li>
 			<li><a href="menu.php">Menu</a></li>
-			<li><a href="#">About</a></li>
 			<li><a href="contact.php">Contact</a></li>
 		</ul>
 		<div class="account">

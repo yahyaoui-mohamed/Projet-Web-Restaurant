@@ -22,10 +22,18 @@ $result = mysqli_fetch_row($query);
 			</div>
 
 			<ul>
-				<li <?php if(!isset($_GET["tab"]) || $_GET["tab"] === "compte") echo "class='active'" ?>><a href="?tab=compte">Compte</a></li>
-				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "commande") echo "class='active'" ?>><a href="?tab=commande">Vos commandes</a></li>
-				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "motdepasse") echo "class='active'" ?>><a href="?tab=motdepasse">Changer mot de passe</a></li>
-				<li><a href="index.php">Retour à l'accueil</a></li>
+				<li <?php if(!isset($_GET["tab"]) || $_GET["tab"] === "compte") echo "class='active'" ?>>
+					<i class="fas fa-user"></i><a href="?tab=compte">Compte</a>
+				</li>
+				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "commande") echo "class='active'" ?>>
+					<i class="fas fa-shopping-cart"></i><a href="?tab=commande">Vos commandes</a>
+				</li>
+				<li <?php if(isset($_GET["tab"]) && $_GET["tab"] === "motdepasse") echo "class='active'" ?>>
+					<i class="fas fa-key"></i><a href="?tab=motdepasse">Changer mot de passe</a>
+				</li>
+				<li>
+					<i class="fas fa-undo"></i><a href="index.php">Retour à l'accueil</a>
+				</li>
 			</ul>
 		</div>
 		<div class="account-content">

@@ -11,11 +11,22 @@ include "connect.php";
 	<title>Contacter Nous</title>
 </head>
 <body>
+	<div class="control-box">
+		<i class="fas fa-cog fa-spin"></i>
+	</div>
+	<div class="color-box">
+		<ul>
+			<li data-color="#fe5f41"></li>
+			<li data-color="#08535D"></li>
+			<li data-color="#3a84df"></li>
+			<li data-color="#4d312c"></li>
+		</ul>
+		<span><i class="fas fa-times"></i></span>
+	</div>
 	<div class="navbar">
 			<ul>
 				<li><a href="./">Home</a></li>
 				<li><a href="menu.php">Menu</a></li>
-				<li><a href="about.php">About</a></li>
 				<li><a href="contact.php">Contact</a></li>
 			</ul>
 			<div class="account">
@@ -92,5 +103,6 @@ include "connect.php";
 				</div>	
 			<input type="submit" value="Envoyer">
 		</form>
+	<script src="js/main.js"></script>	
 </body>
 </html>

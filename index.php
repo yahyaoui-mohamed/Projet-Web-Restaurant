@@ -14,6 +14,18 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 	<title>Restaurant</title>
 </head>
 <body>
+	<div class="control-box">
+		<i class="fas fa-cog fa-spin"></i>
+	</div>
+	<div class="color-box">
+		<ul>
+			<li data-color="#fe5f41"></li>
+			<li data-color="#08535D"></li>
+			<li data-color="#3a84df"></li>
+			<li data-color="#4d312c"></li>
+		</ul>
+		<span><i class="fas fa-times"></i></span>
+	</div>
 	<a href="#" id="scroll-top">&#8593;</a>
 	<div class="reserver">
 			<span>&#x2716;</span>
@@ -45,7 +57,6 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 			<ul>
 				<li><a href="./">Home</a></li>
 				<li><a href="menu.php">Menu</a></li>
-				<li><a href="about.php">About</a></li>
 				<li><a href="contact.php">Contact</a></li>
 			</ul>
 			<div class="account">
@@ -53,7 +64,7 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 				if(isset($_SESSION["admin"]))
 				{
 					echo "<a href='admin.php'>Dashboard</a>";
-					echo "<a href='deconnect.php'>Déconnexion</a>";
+					echo "<a href='deconnect.php'><i class='fas fa-sign-out-alt'></i> Déconnexion</a>";
 				}
 				else if(isset($_SESSION["user"]))
 				{
@@ -98,19 +109,19 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 			<div class="item">
 				<img src="img/healthy.svg" alt="">
 				<h1>Repas Sain</h1>
-				<p>Making a reservation at Délicious restaurant is easy and takes just a couple of minutes.</p>
+				<p>Faire une réservation dans un délicieux restaurant est facile et ne prend que quelques minutes.</p>
 			</div>
 
 			<div class="item">
 				<img src="img/food.svg" alt="">
 				<h1>Fast Food</h1>
-				<p>Making a reservation at Délicious restaurant is easy and takes just a couple of minutes.</p>
+				<p>Faire une réservation dans un délicieux restaurant est facile et ne prend que quelques minutes.</p>
 			</div>
 
 			<div class="item">
 				<img src="img/coffee.svg" alt="">
 				<h1>Caffée Delicieux</h1>
-				<p>Making a reservation at Délicious restaurant is easy and takes just a couple of minutes.</p>
+				<p>Faire une réservation dans un délicieux restaurant est facile et ne prend que quelques minutes.</p>
 			</div>
 		</div>
 	</div>
@@ -214,7 +225,7 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 			</ul>
 		</div>
 		<div class="footer-item">
-			<div class="mapouter"><div class="gmap_canvas"><iframe width="352" height="293" id="gmap_canvas" src="https://maps.google.com/maps?q=&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://soap2day-to.com"></a><br><style>.mapouter{position:relative;text-align:right;height:293px;width:352px;}</style><a href="https://www.embedgooglemap.net">google map embed code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:293px;width:352px;}</style></div></div>
+			<div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.281964746296!2d10.565097814784021!3d36.40237279769265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd617c47ada893%3A0xa5662090817a12af!2sRestaurant%20Condor!5e0!3m2!1sfr!2stn!4v1620347748711!5m2!1sfr!2stn" width="352" height="293" style="border:0;" allowfullscreen="" loading="lazy"></iframe><a href="https://soap2day-to.com"></a><br><style>.mapouter{position:relative;text-align:right;height:293px;width:352px;}</style><a href="https://www.embedgooglemap.net">google map embed code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:293px;width:352px;}</style></div></div>
 		</div>
 	</footer>
 	<p class="copyright">Restaurant 2021 &copy; All Right Resereved &reg;</p>
