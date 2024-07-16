@@ -10,57 +10,63 @@ $res = mysqli_fetch_row($req);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<title>Admin Panel</title>
 </head>
 <body>
 	<div class="account-wrap">
-		<div class="account-sidebar">
-			<div class="account-info">
-				<div class="account-profile-img" style="background-image: url(img/users/admin.png)"></div>
-				<span><?php echo ucfirst($res[0]." ".$res[1]) ?></span>				
-			</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="account-sidebar">
+						<div class="account-info">
+							<div class="account-profile-img" style="background-image: url(img/users/admin.png)"></div>
+							<span><?php echo ucfirst($res[0]." ".$res[1]) ?></span>				
+						</div>
+						<ul>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "statistiques") echo "class='active'" ?>>
+								<i class="far fa-chart-bar"></i><a href="?tab=statistiques">Accueil</a>
+							</li>
+							<li
+								<?php if(!isset($_GET["tab"]) || $_GET["tab"] === "compte") echo "class='active'" ?>>
+								<i class="fas fa-user"></i><a href="?tab=compte">Compte</a>
+							</li>
 
-			<ul>
-				<li 
-					<?php if(!isset($_GET["tab"]) || $_GET["tab"] === "compte") echo "class='active'" ?>>
-					<i class="fas fa-user"></i><a href="?tab=compte">Compte</a>
-				</li>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "utilisateur") echo "class='active'" ?>>
+								<i class="fas fa-users-cog"></i><a href="?tab=utilisateur">Gestion d'utilisateur</a>
+							</li>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "commande") echo "class='active'" ?>>
+								<i class="fas fa-shopping-cart"></i><a href="?tab=commande">Gestion de commandes</a>
+							</li>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "produit") echo "class='active'" ?>>
+								<i class="fas fa-list-ul"></i><a href="?tab=produit">Listes Des Produits</a>
+							</li>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "ajout") echo "class='active'" ?>>
+								<i class="fas fa-plus-circle"></i><a href="?tab=ajout">Ajouter Des produits</a>
+							</li>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "reservetable") echo "class='active'" ?>>
+								<i class="fas fa-calendar"></i><a href="?tab=reservetable">Reservations des tables</a>
+							</li>
+							<li 
+								<?php if(isset($_GET["tab"]) && $_GET["tab"] === "annulercommande") echo "class='active'" ?>>
+								<i class="fas fa-times"></i><a href="?tab=annulercommande">Annuler une commande</a>
+							</li>
+							<li> 
+								<i class="fas fa-undo"></i><a href="index.php">Retour à l'accueil</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "utilisateur") echo "class='active'" ?>>
-					<i class="fas fa-users-cog"></i><a href="?tab=utilisateur">Gestion d'utilisateur</a>
-				</li>
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "commande") echo "class='active'" ?>>
-					<i class="fas fa-shopping-cart"></i><a href="?tab=commande">Gestion de commandes</a>
-				</li>
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "produit") echo "class='active'" ?>>
-					<i class="fas fa-list-ul"></i><a href="?tab=produit">Listes Des Produits</a>
-				</li>
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "ajout") echo "class='active'" ?>>
-					<i class="fas fa-plus-circle"></i><a href="?tab=ajout">Ajouter Des produits</a>
-				</li>
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "reservetable") echo "class='active'" ?>>
-					<i class="fas fa-calendar"></i><a href="?tab=reservetable">Reservations des tables</a>
-				</li>
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "statistiques") echo "class='active'" ?>>
-					<i class="far fa-chart-bar"></i><a href="?tab=statistiques">Statistiques</a>
-				</li>
-				<li 
-					<?php if(isset($_GET["tab"]) && $_GET["tab"] === "annulercommande") echo "class='active'" ?>>
-					<i class="fas fa-times"></i><a href="?tab=annulercommande">Annuler une commande</a>
-				</li>
-				<li> 
-					<i class="fas fa-undo"></i><a href="index.php">Retour à l'accueil</a>
-				</li>
-			</ul>
-		</div>
-		<div class="account-content">
+				<div class="col-lg-10">
+				<div class="account-content">
 			<?php 
 				if(!isset($_GET["tab"]) || $_GET["tab"] === "compte")
 				{
@@ -69,38 +75,77 @@ $res = mysqli_fetch_row($req);
 					<?php 
 						if($_SERVER["REQUEST_METHOD"] === "POST")
 						{
+							$nom = $_POST["nom"];
+							$prenom = $_POST["prenom"];
 							$email = $_POST["email"];
+							$tel = $_POST["tel"];
 							$oldpwd = $_POST["oldpassword"];
 							$newpwd = $_POST["newpassword"];
 							if($newpwd == "")
 							{
 								$newpwd = $oldpwd;
 							}
-							$req = mysqli_query($conn,"UPDATE users SET email = '$email', mdp = '$newpwd' WHERE priority = 1");
+							$req = mysqli_query($conn,"UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel='$tel', mdp = '$newpwd' WHERE priority = 1");
 						}
 					?>
 					<h1>Compte</h1>
 					<?php 
-						$req = mysqli_query($conn, "SELECT email, mdp FROM users WHERE priority = 1");
+						$req = mysqli_query($conn, "SELECT * FROM users WHERE priority = 1");
 						$row = mysqli_fetch_row($req);
 					?>
 						<div class="row">
-							<div class="form-group">
-								<label for="email">Email</label>
-								<input type="email" id="email" value="<?php echo $row[0] ?>"  placeholder="Email" name="email" autocomplete="off">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="nom">Nom</label>
+									<input class="form-control" type="text" id="nom" value="<?php echo $row[1] ?>"  placeholder="Nom" name="nom" autocomplete="off">
+								</div>
+							</div>
+
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="prenom">Prénom</label>
+									<input class="form-control" type="text" id="prenom" value="<?php echo $row[2] ?>"  placeholder="Prénom" name="prenom" autocomplete="off">
+								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="form-group">
-								<label for="mdp">Ancien Mot de passe</label>
-								<input type="password" id="mdp" value="<?php echo $row[1] ?>" placeholder="Mot de passe" name="oldpassword" autocomplete="off">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input class="form-control" type="email" id="email" value="<?php echo $row[3] ?>" placeholder="Email" name="email" autocomplete="off">
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="mdp,">Nouveau mot de passe</label>
-								<input type="password" id="mdpn" value=""  placeholder="Mot de passe" name="newpassword" autocomplete="off">
+
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="tel">Téléphone</label>
+									<input class="form-control" type="text" id="tel" value="<?php echo $row[5] ?>" placeholder="Téléphone" name="tel" autocomplete="off">
+								</div>
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mdpn">Ancien mot de passe</label>
+										<input class="form-control" type="password" id="mdpn" value=""  placeholder="Ancien Mot de passe" name="oldpassword" autocomplete="off">
+									</div>
+							</div>
+
+							<div class="col-lg-6">
+									<div class="form-group">
+										<label for="mdp">Nouveau mot de passe</label>
+										<input class="form-control" type="password" id="mdp" value=""  placeholder="Nouveau Mot de passe" name="newpassword" autocomplete="off">
+									</div>
 							</div>
 						</div>
-						<input type="submit" value="Enregistrer">
+						
+
+						<div class="col-lg-12">
+							<div class="form-group">
+								<input class="form-control" type="submit" value="Enregistrer">
+							</div>
+						</div>
 
 					</form>
 
@@ -125,7 +170,7 @@ $res = mysqli_fetch_row($req);
 					$req = mysqli_query($conn, "SELECT * FROM users WHERE priority = 0");
 					if(mysqli_num_rows($req) !== 0)
 					{
-						echo "<table>
+						echo "<table class='table'>
 						<tr>
 							<th>Nom</th>
 							<th>Prénom</th>
@@ -260,27 +305,35 @@ $res = mysqli_fetch_row($req);
 
 						?>
 						<div class="row">
-							<div class="form-group">
-								<label for="nom">Nom du produit</label>
-								<input type="text" id="nom" value="" placeholder="Nom du produit" name="nom" required autocomplete="off">
+							<div class="col-lg-6 mb-3">
+								<div class="form-group">
+									<label for="nom">Nom du produit</label>
+									<input class="form-control" type="text" id="nom" value="" placeholder="Nom du produit" name="nom" required autocomplete="off">
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="prix">Prix de produit</label>
-								<input type="number" id="prix" value=""  placeholder="Prix de produit" name="prix" required autocomplete="off">
+							<div class="col-lg-6 mb-3">
+								<div class="form-group">
+									<label for="prix">Prix de produit</label>
+									<input class="form-control" type="number" id="prix" value=""  placeholder="Prix de produit" name="prix" required autocomplete="off">
+								</div>
 							</div>
 						</div>
 						
 						<div class="row">
-							<div class="form-group">
-								<label for="desc">Description du produit</label>
-								<input type="text" id="desc" value=""  placeholder="Description du produit" name="desc" required autocomplete="off">
+							<div class="col-lg-6 mb-3">
+								<div class="form-group">
+									<label for="desc">Description du produit</label>
+									<input class="form-control" type="text" id="desc" value=""  placeholder="Description du produit" name="desc" required autocomplete="off">
+								</div>
+							</div>
+							<div class="col-lg-6 mb-3">
+								<div class="form-group">
+										<label for="file">Photo du produit</label>
+										<input class="form-control" type="file" id="file" nom="file" name="img">
+								</div>
 							</div>
 						</div>
-						<div class="form-group">
-								<label for="file">Photo du produit</label>
-								<input type="file" id="file" nom="file" name="img">
-						</div>
-						<input type="submit" value="Ajouter">
+						<input class="form-control" type="submit" value="Ajouter">
 
 					</form>
 					<?php
@@ -300,7 +353,7 @@ $res = mysqli_fetch_row($req);
 						if($num !== 0)
 						{
 							echo "
-							<table>
+							<table class='table'>
 							<thead>
 								<th>Commande N°</th>
 								<th>Effecté Par</th>
@@ -345,17 +398,29 @@ $res = mysqli_fetch_row($req);
 					}
 					?>
 					<div class="statics">
-						<div class="static-item">
-							<span>Utilisateurs Totales</span>
-							<h1><?php echo mysqli_num_rows($query1); ?></h1>
-						</div>
-						<div class="static-item">
-							<span>Commande Totales</span>
-							<h1><?php echo mysqli_num_rows($query2); ?></h1>
-						</div>
-						<div class="static-item">
-							<span>Gains Totales</span>
-							<h1><?php echo $sum; ?> TND</h1>
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="static-item">
+										<span>Utilisateurs Totales</span>
+										<h1><?php echo mysqli_num_rows($query1); ?></h1>
+									</div>
+								</div>
+								
+								<div class="col-lg-4">
+									<div class="static-item">
+										<span>Commande Totales</span>
+										<h1><?php echo mysqli_num_rows($query2); ?></h1>
+									</div>
+								</div>
+
+								<div class="col-lg-4">
+									<div class="static-item">
+										<span>Gains Totales</span>
+										<h1><?php echo $sum; ?> TND</h1>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<?php
@@ -369,7 +434,7 @@ $res = mysqli_fetch_row($req);
 					echo "<p>$num Reservations Totales.</p>";
 					if($num !== 0)
 					{
-						echo "<table>
+						echo "<table class='table'>
 						<thead>
 							<th>Nom</th>
 							<th>Prénom</th>
@@ -408,7 +473,7 @@ $res = mysqli_fetch_row($req);
 					echo "<h1>Annuler une Commande</h1>";
 					$req = mysqli_query($conn, "SELECT * FROM ventes");
 					echo "
-					<table>
+					<table class='table'>
 						<thead>
 							<th>Commande N°</th>
 							<th>Effecté Par</th>
@@ -441,7 +506,12 @@ $res = mysqli_fetch_row($req);
 
 				?>
 
+				</div>
+				</div>
+			</div>
 		</div>
+		
+		
 	</div>		
 </body>
 </html>

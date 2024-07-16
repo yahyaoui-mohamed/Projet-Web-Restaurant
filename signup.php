@@ -15,21 +15,8 @@ include "connect.php";
 	<title>Créer Un Compte</title>
 </head>
 <body>
-	<div class="control-box">
-		<i class="fas fa-cog fa-spin"></i>
-	</div>
-	<div class="color-box">
-		<ul>
-			<li data-color="#fe5f41"></li>
-			<li data-color="#08535D"></li>
-			<li data-color="#3a84df"></li>
-			<li data-color="#4d312c"></li>
-		</ul>
-		<span><i class="fas fa-times"></i></span>
-	</div>
-	<a href="index.php" class="back">&#8592; Retour à l'accueil</a>
-	<form class="signup-form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-	<h1>Créer Un Compte</h1>
+
+<form class="signup-form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
 	<?php 
 		if($_SERVER["REQUEST_METHOD"] === "POST")
 		{
