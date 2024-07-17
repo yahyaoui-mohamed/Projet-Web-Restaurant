@@ -16,49 +16,6 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 </head>
 <body>
 
-	<!-- <div class="navbar">
-		<ul>
-			<li><a href="./">Home</a></li>
-			<li><a href="menu.php">Menu</a></li>
-			<li><a href="reserver.php">Reserver</a></li>
-			<li><a href="contact.php">Contact</a></li>
-		</ul>
-		<div class="account">
-			<?php 
-			if(isset($_SESSION["admin"]))
-			{
-				echo "<a href='admin.php'>Dashboard</a>";
-				echo "<a href='deconnect.php'><i class='fas fa-sign-out-alt'></i> Déconnexion</a>";
-			}
-			else if(isset($_SESSION["user"]))
-			{
-
-				echo "<a href='account.php'>Compte</a>";
-				echo "<a href='deconnect.php'>Déconnexion</a>";
-				echo "
-				<a href='account.php?tab=commande'>
-					<span href='#' id='shop'>
-						<span class='shop-count'>0</span>
-						<i class='fas fa-shopping-cart'></i>
-					</span>
-				</a>"
-				;
-			}
-			else{
-				?>
-				<a href="signup.php">
-					<i class="fi fi-rs-user"></i>
-				</a>
-				<a href="login.php">
-					<span>0</span>
-					<i class="fi fi-rs-shopping-cart"></i>
-				</a>
-			<?php
-			}
-			?>
-		</div>
-	</div> -->
-
 <nav class="navbar navbar-expand-lg bg-transparent">
 	<div class="container">
 		<a class="navbar-brand" href="./">Restaurant</a>
@@ -83,7 +40,7 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 			</ul>
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a href="signup.php">
+					<a href="login.php">
 						<i class="fi fi-rs-user"></i>
 					</a>
 				</li>
@@ -94,7 +51,7 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 					</a>
 				</li>
 				<?php 
-				if(!isset($_SESSION["user"])){
+				if(isset($_SESSION["user"])){
 				?>
 				<li class="nav-item">
 					<a href="deconnect.php">Logout

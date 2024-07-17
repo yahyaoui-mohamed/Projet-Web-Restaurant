@@ -133,6 +133,7 @@ galleryItem.forEach(function(item, index){
 let navbar = document.querySelector(".navbar");
 
 onscroll = function(){
+	console.log(this.scrollY)
 	if(this.scrollY > 150){
 		navbar.classList.add("fixed");
 	}
@@ -144,3 +145,16 @@ onscroll = function(){
 let year = new Date().getFullYear()
 
 document.getElementById("year").innerText = year;
+
+// let div = document.querySelector(".reservation").getBoundingClientRect();
+let div = document.querySelector(".reservation");
+let btn = document.getElementById("reserver");
+
+btn.addEventListener("click", function(){
+	console.log(div.offsetTop)
+	window.scrollTo({
+		top:1536,
+		behavior:"smooth"
+	});
+});
+

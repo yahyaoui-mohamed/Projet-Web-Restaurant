@@ -172,7 +172,18 @@
 	position: relative;
 }
 
-.header .overlay{
+
+/* .header .overlay{
+	width:100%;
+	height:100%;
+	background-color:#000;
+	position: absolute;
+	top:0;
+	left:0;
+	opacity:.4;
+} */
+
+.overlay{
 	width:100%;
 	height:100%;
 	background-color:#000;
@@ -252,6 +263,7 @@
 
 .navbar{
 	position: fixed;
+	top:0;
 	z-index: 55;
 	width:100%;
 	padding:30px 0;
@@ -742,10 +754,7 @@ table tr:nth-child(odd)
 	padding:50px;
 	text-align:center;
 	font-family:Raleway;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
+	background-color: #e67e22;
 }
 
 .signup-form div{
@@ -772,6 +781,12 @@ table tr:nth-child(odd)
 	border:none;
 	color:#fff;
 	cursor:pointer;
+	transition:.4s;
+}
+
+.signup-form input[type=submit]:hover
+{
+	background-color:#e67e22;
 }
 
 
@@ -779,10 +794,6 @@ table tr:nth-child(odd)
 	padding:50px;
 	text-align:center;
 	font-family:Raleway;
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
 }
 
 .login-form div{
@@ -809,6 +820,11 @@ table tr:nth-child(odd)
 	border:none;
 	color:#fff;
 	cursor:pointer;
+	transition:.4s;
+}
+
+.login-form input[type=submit]:hover{
+	background-color: #e67e22;
 }
 
 .alert-success{
@@ -1156,4 +1172,62 @@ input[type=submit]:focus{
 
 .fixed .navbar-brand{
 	color:#e67e22;
+}
+
+.forms{
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+	width:1200px;
+	height:600px;
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+
+.menu{
+	background-image: url("../img/hero.jpg");
+	height:	80vh;
+	background-size: cover;
+	text-align:center;
+	display:flex;
+	align-items: center;
+	justify-content:center;
+	color:#fff;
+	position: relative;
+}
+
+.menu .title{
+	z-index:2;
+}
+.menu h1{
+	font-family: Poppins;
+	font-weight:800;
+	letter-spacing:6px;
+	text-transform: uppercase;
+}
+
+
+.contact{
+	background-image: url("../img/hero.jpg");
+	height:	80vh;
+	background-size: cover;
+	text-align:center;
+	display:flex;
+	align-items: center;
+	justify-content:center;
+	color:#fff;
+	position: relative;
+}
+
+.contact .title{
+	z-index:2;
+}
+.contact h1{
+	font-family: Poppins;
+	font-weight:800;
+	letter-spacing:6px;
+	text-transform: uppercase;
 }
