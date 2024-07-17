@@ -1,7 +1,9 @@
-<?php 
+<?php
 session_start();
 include "connect.php";
+$req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@ include "connect.php";
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-straight/css/uicons-regular-straight.css'>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<title>Contacter Nous</title>
+	<title>Restaurant</title>
 </head>
 <body>
 
@@ -63,72 +65,16 @@ include "connect.php";
 	</div>
 </nav>
 
-		<div class="contact">
-				<div class="overlay"></div>
-				<div class="title">
-					<h1>Contact Us</h1>
-				</div>
-		</div>
+<div class="reserver-table">
+        <div class="overlay"></div>
+        <div class="title">
+            <h1>Réserver votre table</h1>
+        </div>
+    </div>
 
-		<form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST" class="contact-form text-center">
-			<h1>Envoyez-nous un message</h1>
-			<?php 
-			if($_SERVER["REQUEST_METHOD"] === "POST")
-			{
-				$nom    = $_POST["nom"];
-				$prenom = $_POST["prenom"];
-				$sujet  = $_POST["sujet"];
-				$mail   = $_POST["email"];
-				$msg    = $_POST["message"];
-				$req = mysqli_query($conn, "INSERT INTO contact VALUES('','$nom','$prenom','$sujet','$mail','$msg')");
-				echo "<p>Votre message à été envoyée.</p>";
-			}
 
-			?>
-			<div class="container">
-			
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="form-group">
-						<label for="nom">Nom</label>
-						<input class="form-control" type="text" id="nom" name="nom" placeholder="Votre Nom" autocomplete="off" required>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="form-group">
-						<label for="prenom">Prénom</label>
-						<input class="form-control" type="text" id="prenom" name="prenom" placeholder="Votre Prénom" required autocomplete="off">
-					</div>
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="form-group">
-						<label for="sujet">Sujet</label>
-						<input class="form-control" type="text" id="sujet" name="sujet" placeholder="Votre Sujet" required autocomplete="off">
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="form-group">
-						<label for="email">Email</label>
-						<input class="form-control" type="text" id="email" name="email" placeholder="Votre Email" required autocomplete="off">
-					</div>
-				</div>
-				
-			</div>
-				
-			<div class="form-group">
-					<label for="message">Message</label>
-					<textarea class="form-control" name="message" id="message" placeholder="Votre Message..." required autocomplete="off"></textarea>
-			</div>
-			<div class="form-group">
-				<input class="form-control" type="submit" value="Envoyer">
-			</div>	
-			</div>
-		</form>
-
-		<footer>
+<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
@@ -164,10 +110,11 @@ include "connect.php";
 			</div>
 		</div>
 		
-		
+
 		
 	</footer>
 	<p class="copyright">Restaurant <span id="year"></span> &copy; All Right Resereved &reg;</p>
-	<script src="js/main.js"></script>	
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/main.js"></script>	
 </body>
 </html>
