@@ -8,9 +8,9 @@ $tel = $_GET["tel"];
 $nbr = $_GET["nbr"];
 $date = $_GET["date"];
 
-$query = mysqli_query($conn, "SELECT * FROM reservetable WHERE date = '$date'");
-
-if(mysqli_num_rows($query) == 1)
+$query = $connect->prepare("SELECT * FROM reservetable WHERE date = '$date'");
+$query->execute();
+if($query->rowCount() == 1)
 {
 	echo "0";
 }
@@ -20,8 +20,8 @@ else if(strtotime($date) < strtotime(date("Y-m-d")))
 }
 else
 {
-$query1 = mysqli_query($conn, "INSERT INTO reservetable values('','$nom','$prenom','$tel','$nbr','$date','0')");
-
+$query1 = $connect->prepare("INSERT INTO reservetable values('','$nom','$prenom','$tel','$nbr','$date','0')");
+$query1->execute();
 echo "
 <div class=reussite>
 	<h1>Reservation résussite !</h1>

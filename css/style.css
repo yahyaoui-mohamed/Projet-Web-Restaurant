@@ -121,22 +121,10 @@
 	margin-bottom:25px;
 	box-shadow:0 0 11px 0px #ccc;
 	transition:.3s;
-	width:calc(80% / 3);
 }
 
 .menu-container .menu-item span{
-	position:absolute;
-	right:30px;
-	top:30px;
-	background-color:var(--main-color);
-	width:50px;
-	height:50px;
-	border-radius:50%;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	color:#fff;
-	font-weight:bold;
+	font-family: Poppins;
 }
 
 .menu-container .menu-item p{
@@ -146,11 +134,9 @@
 .menu-container .menu-item a{
 	text-decoration:none;
 	color:#fff;
-	background-color:var(--main-color);
 	padding:10px 30px;
 	display:inline-block;
 	margin:10px 0;
-	border-radius:50px;
 }
 
 #scroll-top:hover{
@@ -668,16 +654,12 @@ table tr:nth-child(odd)
 }
 
 .menu-container{
-	display:flex;
-	flex-wrap:wrap;
 	margin-top:100px;
-	justify-content:space-between;
 	padding:20px 60px;
 }
 
 .menu-container .menu-item{
 	text-align:center;
-	width:calc(90% / 3);
 	background-color:#fff;
 	position:relative;
 	border-radius:5px;
@@ -689,36 +671,33 @@ table tr:nth-child(odd)
 }
 
 .menu-container .menu-item span{
-	position:absolute;
-	right:30px;
-	top:30px;
-	background-color:var(--main-color);
-	width:50px;
-	height:50px;
 	border-radius:50%;
-	display:flex;
-	align-items:center;
-	justify-content:center;
-	color:#fff;
 	font-weight:bold;
 }
 
 .menu-container .menu-item p{
 	color:#9c9c9c;
+	font-family: Poppins;
 }
 
 .menu-container .menu-item a{
 	text-decoration:none;
 	color:#fff;
-	background-color:var(--main-color);
+	background-color:#e67e22;
 	padding:10px 30px;
-	display:inline-block;
+	display:block;
+	font-family: Poppins;
 	margin:10px 0;
-	border-radius:50px;
 }
 
 .menu-container .menu-item img{
-	width:100%;
+	width:200px;
+	margin:15px 0;
+	border-radius:50%;
+}
+
+.menu-container .menu-item h1{
+	font-family: Poppins;
 }
 
 .statics{
@@ -746,8 +725,10 @@ table tr:nth-child(odd)
 .signup-form{
 	padding:50px;
 	text-align:center;
-	font-family:Raleway;
-	background-color: #e67e22;
+}
+
+.signup-form h1{
+	font-family:Poppins;
 }
 
 .signup-form div{
@@ -786,7 +767,9 @@ table tr:nth-child(odd)
 .login-form{
 	padding:50px;
 	text-align:center;
-	font-family:Raleway;
+}
+.login-form h1{
+	font-family:Poppins;
 }
 
 .login-form div{

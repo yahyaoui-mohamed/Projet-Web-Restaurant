@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "connect.php";
-$req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
+$req = $connect->prepare("SELECT * FROM food");
+$req->execute();
 ?>
 
 <!DOCTYPE html>

@@ -74,25 +74,31 @@ $req->execute();
 	</div>
 
 	<div class="menu-container">
-
-			<?php 
+		<div class="container">
+			<div class="row">
+				<?php 
 				while($res = $req->fetch())
 				{
 					?>
+					<div class="col-lg-4">
 					<div class='menu-item'>
 						<img src='<?php echo $res[4] ?>' alt=''>
-						<span><?php echo $res[2]?>TND</span>
 						<h1><?php echo $res[1] ?></h1>
 						<p><?php echo $res[3] ?></p>
+						<span><?php echo $res[2]?>TND</span>
 						<input type="hidden" name="id" value="<?php echo $res[0]?>">
 						<a href="#" id='commander' class="commande-btn" 
 							<?php if(isset($_SESSION["user"]))echo "data-login='true'"?>>
 						Commander</a>
 					</div>
+					</div>
+
 				<?php
 				}
 
 			?>
+				</div>
+			</div>
 		</div>
 
 		<footer>

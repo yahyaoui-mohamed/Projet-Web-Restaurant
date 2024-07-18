@@ -1,8 +1,9 @@
 <?php 
 include "connect.php";
 session_start();
-$req = mysqli_query($conn, "SELECT nom, prenom FROM users WHERE priority = 1");
-$res = mysqli_fetch_row($req);
+$req = $connect->prepare("SELECT nom, prenom FROM users WHERE priority = 1");
+$req->execute();
+$res = $req->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -85,13 +86,15 @@ $res = mysqli_fetch_row($req);
 							{
 								$newpwd = $oldpwd;
 							}
-							$req = mysqli_query($conn,"UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel='$tel', mdp = '$newpwd' WHERE priority = 1");
+							$req = $connect->prepare("UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel='$tel', mdp = '$newpwd' WHERE priority = 1");
+							$req->execute();
 						}
 					?>
 					<h1>Compte</h1>
 					<?php 
-						$req = mysqli_query($conn, "SELECT * FROM users WHERE priority = 1");
-						$row = mysqli_fetch_row($req);
+						$req = $connect->prepare("SELECT * FROM users WHERE priority = 1");
+						$req->execute();
+						$row = $req->fetch();
 					?>
 						<div class="row">
 							<div class="col-lg-6">
@@ -167,8 +170,9 @@ $res = mysqli_fetch_row($req);
 					 ?>
 					 <h1>Gestion D'utilisateur</h1>
 				<?php
-					$req = mysqli_query($conn, "SELECT * FROM users WHERE priority = 0");
-					if(mysqli_num_rows($req) !== 0)
+					$req = $connect->prepare("SELECT * FROM users WHERE priority = 0");
+					$req->execute();
+					if($req->rowCount() !== 0)
 					{
 						echo "<table class='table'>
 						<tr>
@@ -180,7 +184,7 @@ $res = mysqli_fetch_row($req);
 					else{
 						echo "<p>Pas d'utilisateur jusqu'à maintenant.";
 					}
-					while($tab = mysqli_fetch_array($req))
+					while($tab = $req->fetch())
 					{
 						echo 
 						"
@@ -201,8 +205,9 @@ $res = mysqli_fetch_row($req);
 					{
 						echo "<h1>Modifier Un Produit</h1>";
 						$id    = $_GET["id"];
-						$query = mysqli_query($conn, "SELECT * FROM food WHERE food_id = $id");
-						$res   = mysqli_fetch_row($query);
+						$query = $connect->prepare("SELECT * FROM food WHERE food_id = $id");
+						$query->execute();
+						$res   = $query->fetch();
 						if($_SERVER["REQUEST_METHOD"] === "POST")
 						{
 							$nom  = $_POST["nom"];
@@ -213,17 +218,13 @@ $res = mysqli_fetch_row($req);
 							{
 								$destination = "img/users/".$_FILES["img"]["name"];
 								move_uploaded_file($_FILES["img"]["tmp_name"], $destination);
-								$req = mysqli_query($conn, "
-									UPDATE food 
-									SET food_name = '$nom', food_price = $prix, food_description = '$desc', food_img = '$destination'
-									WHERE food_id = $id");
+								$req = $connect->prepare("UPDATE food  SET food_name = '$nom', food_price = $prix, food_description = '$desc', food_img = '$destination' WHERE food_id = $id");
+								$req->execute();
 							}
 							else
 							{
-								$req = mysqli_query($conn, "
-								UPDATE food 
-								SET food_name = '$nom', food_price = $prix, food_description = '$desc'
-								WHERE food_id = $id");	
+								$req = $connect->prepare("UPDATE food SET food_name = '$nom', food_price = $prix, food_description = '$desc' WHERE food_id = $id");
+								$req->execute();
 							}
 
 						
@@ -262,8 +263,9 @@ $res = mysqli_fetch_row($req);
 						echo "<h1>Listes des Produits</h1>
 								<div class='menu-container'>
 						";
-						$req = mysqli_query($conn, "SELECT * FROM food");
-						while($tab = mysqli_fetch_array($req))
+						$req = $connect->prepare("SELECT * FROM food");
+						$req->execute();
+						while($tab = $req->fetch())
 						{
 							echo
 						"
@@ -300,7 +302,8 @@ $res = mysqli_fetch_row($req);
 								$photo  = $_FILES["img"]["name"];
 								$destination = "img/users/".$_FILES["img"]["name"];
 								move_uploaded_file($_FILES["img"]["tmp_name"], $destination);
-								$req = mysqli_query($conn, "INSERT INTO food VALUES('','$nom','$prix','$desc','$destination')");
+								$req = $connect->prepare("INSERT INTO food VALUES('','$nom','$prix','$desc','$destination')");
+								$req->execute();
 							}
 
 						?>
@@ -347,8 +350,9 @@ $res = mysqli_fetch_row($req);
 					?>
 					<h1>Gestion des commandes</h1>
 					<?php
-						$query  = mysqli_query($conn, "SELECT * FROM commande WHERE commande_confirm = 1");
-						$num    = mysqli_num_rows($query);
+						$query  = $connect->prepare("SELECT * FROM commande WHERE commande_confirm = 1");
+						$query->execute();
+						$num = $query->rowCount();
 						echo "<p>".$num." commandes au total.</p>";
 						if($num !== 0)
 						{
@@ -356,21 +360,23 @@ $res = mysqli_fetch_row($req);
 							<table class='table'>
 							<thead>
 								<th>Commande N°</th>
-								<th>Effecté Par</th>
+								<th>Effectué Par</th>
 								<th>Produit</th>
 								<th>Prix</th>
 								<th></th>
 							</thead>
 							";
 						}
-						while($tab = mysqli_fetch_array($query))
+						while($tab = $query->fetch())
 						{
 							echo "<tr>";
-							$query1     = mysqli_query($conn, "SELECT * FROM users WHERE id      = '$tab[2]'");
-							$query2     = mysqli_query($conn, "SELECT * FROM food  WHERE food_id = '$tab[1]'");
-							while($tab1 = mysqli_fetch_array($query1))
+							$query1 = $connect->prepare("SELECT * FROM users WHERE id      = '$tab[2]'");
+							$query1->execute();
+							$query2 = $connect->prepare("SELECT * FROM food  WHERE food_id = '$tab[1]'");
+							$query2->execute();
+							while($tab1 = $query1->fetch())
 							{
-								while($tab2 = mysqli_fetch_array($query2))
+								while($tab2 = $query2->fetch())
 								{
 									echo "
 									<td>$tab[0]</td>
@@ -388,13 +394,15 @@ $res = mysqli_fetch_row($req);
 				else if($_GET["tab"] === "statistiques")
 				{
 					echo "<h1>Statistiques</h1>";
-					$query1 = mysqli_query($conn, "SELECT * FROM users WHERE priority = 0");
-					$query2 = mysqli_query($conn, "SELECT * FROM ventes");
+					$query1 = $connect->prepare("SELECT * FROM users WHERE priority = 0");
+					$query2 = $connect->prepare("SELECT * FROM ventes");
+					$query2->execute();
 					$sum = 0;
-					while($tab = mysqli_fetch_array($query2))
+					while($tab = $query2->fetch())
 					{
-						$query3 = mysqli_query($conn, "SELECT * FROM food WHERE food_id = $tab[2]");
-						$sum   += mysqli_fetch_row($query3)[2];
+						$query3 = $connect->prepare("SELECT * FROM food WHERE food_id = $tab[2]");
+						$query3->execute();
+						$sum   += $query3->fetch()[2];
 					}
 					?>
 					<div class="statics">
@@ -403,14 +411,14 @@ $res = mysqli_fetch_row($req);
 								<div class="col-lg-4">
 									<div class="static-item">
 										<span>Utilisateurs Totales</span>
-										<h1><?php echo mysqli_num_rows($query1); ?></h1>
+										<h1><?php echo $query1->rowCount(); ?></h1>
 									</div>
 								</div>
 								
 								<div class="col-lg-4">
 									<div class="static-item">
 										<span>Commande Totales</span>
-										<h1><?php echo mysqli_num_rows($query2); ?></h1>
+										<h1><?php echo $query2->rowCount(); ?></h1>
 									</div>
 								</div>
 
@@ -429,8 +437,9 @@ $res = mysqli_fetch_row($req);
 				else if($_GET["tab"] === "reservetable")
 				{
 					echo "<h1>Listes des Reservations des tables</h1>";
-					$req = mysqli_query($conn, "SELECT * FROM reservetable");
-					$num = mysqli_num_rows($req);
+					$req = $connect->prepare("SELECT * FROM reservetable");
+					$req->execute();
+					$num = $req->rowCount();
 					echo "<p>$num Reservations Totales.</p>";
 					if($num !== 0)
 					{
@@ -446,7 +455,7 @@ $res = mysqli_fetch_row($req);
 						";
 					}
 
-					while($tab = mysqli_fetch_array($req))
+					while($tab = $req->fetch())
 					{
 						echo "
 						<tr>
@@ -471,7 +480,8 @@ $res = mysqli_fetch_row($req);
 				else if($_GET["tab"] === "annulercommande")
 				{
 					echo "<h1>Annuler une Commande</h1>";
-					$req = mysqli_query($conn, "SELECT * FROM ventes");
+					$req = $connect->prepare("SELECT * FROM ventes");
+					$req->execute();
 					echo "
 					<table class='table'>
 						<thead>
@@ -482,13 +492,15 @@ $res = mysqli_fetch_row($req);
 							<th></th>
 						</thead>
 					";
-					while($tab = mysqli_fetch_array($req))
+					while($tab = $req->fetch())
 					{
-						$req1 = mysqli_query($conn, "SELECT * FROM users WHERE id = $tab[1]");
-						$req2 = mysqli_query($conn, "SELECT * FROM food  WHERE food_id = $tab[2]");
-						while($tab1 = mysqli_fetch_array($req1))
+						$req1 = $connect->prepare("SELECT * FROM users WHERE id = $tab[1]");
+						$req2 = $connect->prepare("SELECT * FROM food  WHERE food_id = $tab[2]");
+						$req1->execute();
+						$req2->execute();
+						while($tab1 = $req1->fetch())
 						{
-							while($tab2 = mysqli_fetch_array($req2))
+							while($tab2 = $req2->fetch())
 							{
 								echo "
 								<tr>

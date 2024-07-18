@@ -1,8 +1,9 @@
 <?php
 session_start();
 include "connect.php";
-$query  = mysqli_query($conn,"SELECT * FROM users WHERE email = '$_SESSION[user]'");
-$result = mysqli_fetch_row($query);
+$query  = $connect->prepare("SELECT * FROM users WHERE email = '$_SESSION[user]'");
+$query->execute();
+$result = $query->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -57,14 +58,13 @@ $result = mysqli_fetch_row($query);
 								$filelocation = $_FILES["img"]["tmp_name"];
 								$destination = "img/users/".$_FILES["img"]["name"];
 								move_uploaded_file($_FILES["img"]["tmp_name"], $destination);								
-								$query  = mysqli_query($conn,"
-								UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel', profile_image = '$destination' WHERE email = '$_SESSION[user]'");
-
+								$query = $connect->prepare("UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel', profile_image = '$destination' WHERE email = '$_SESSION[user]'");
+								$query->execute();
 							}
 							else
 							{
-								$query  = mysqli_query($conn,"
-								UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel' WHERE email = '$_SESSION[user]'");
+								$query  = $connect->prepare($conn," UPDATE users SET nom = '$nom', prenom = '$prenom', email = '$email', tel = '$tel' WHERE email = '$_SESSION[user]'");
+								$query->execute();
 							}
 
 											
@@ -73,8 +73,9 @@ $result = mysqli_fetch_row($query);
 					?>
 						<div class="row">
 						<?php 
-							$query  = mysqli_query($conn,"SELECT * FROM users WHERE email = '$_SESSION[user]'");
-							$result = mysqli_fetch_row($query);
+							$query  = $connect->prepare("SELECT * FROM users WHERE email = '$_SESSION[user]'");
+							$query->execute();
+							$result = $query->fetch();
 
 						?>
 							<div class="form-group">
@@ -117,15 +118,17 @@ $result = mysqli_fetch_row($query);
 						{
 							$oldpwd = $_POST["oldpassword"];
 							$new    = $_POST["newpassword"];
-							$req = mysqli_query($conn, "UPDATE users SET mdp = $new WHERE email = '$_SESSION[user]'");
+							$req = $connect->prepare("UPDATE users SET mdp = $new WHERE email = '$_SESSION[user]'");
+							$req->fetch();
 						}
 						?>
 						<div class="row">
 							<div class="form-group">
 								<label for="mdp">Ancien Mot de passe</label>
 								<?php 
-									$req = mysqli_query($conn, "SELECT mdp FROM users WHERE email = '$_SESSION[user]'");
-									$res = mysqli_fetch_row($req);
+									$req = $connect->prepare("SELECT mdp FROM users WHERE email = '$_SESSION[user]'");
+									$req->execute();
+									$res = $req->fetch();
 								?>
 								<input type="password" id="mdp" 	value="<?php echo $res[0] ?>" placeholder="Mot de passe" name="oldpassword">
 							</div>
@@ -143,10 +146,12 @@ $result = mysqli_fetch_row($query);
 				{   ?>
 						<h1>Vos Commandes</h1>
 					<?php
-					$query  = mysqli_query($conn, "SELECT * FROM users WHERE email = '$_SESSION[user]'");
-					$id     = mysqli_fetch_row($query)[0];
-					$query1 = mysqli_query($conn, "SELECT * FROM commande WHERE user_id = '$id'");
-					echo "<p>Vous Avez ".mysqli_num_rows($query1)." Commandes.</p>";
+					$query  = $connect->prepare("SELECT * FROM users WHERE email = '$_SESSION[user]'");
+					$query->execute();
+					$id = $query->fetch()[0];
+					$query1 = $connect->prepare("SELECT * FROM commande WHERE user_id = '$id'");
+					$query1->execute();
+					echo "<p>Vous Avez ".$query1->rowCount()." Commandes.</p>";
 					echo "
 					<table>
 						<thead>
@@ -156,11 +161,12 @@ $result = mysqli_fetch_row($query);
 							<th></th>
 						</thead>
 					";
-					while($tab = mysqli_fetch_array($query1))
+					while($tab = $query1->fetch())
 					{
 						echo "<tr>";
-						$query2 = mysqli_query($conn, "SELECT * FROM food WHERE food_id = '$tab[1]'");
-						while($tab1 = mysqli_fetch_array($query2))
+						$query2 = $connect->prepare("SELECT * FROM food WHERE food_id = '$tab[1]'");
+						$query2->fetch();
+						while($tab1 = $query2->fetch())
 						{
 							echo "
 							<td>$tab1[1]</td>

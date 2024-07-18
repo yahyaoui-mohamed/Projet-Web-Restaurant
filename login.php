@@ -21,19 +21,20 @@ include "connect.php";
 			<div class="row">
 				<div class="col-lg-6">
 				<form class="login-form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+					<h1>Login</h1>
 						<?php 
 						if($_SERVER["REQUEST_METHOD"] === "POST")
 							{
 								$email  = $_POST["email"];
 								$mdp    = $_POST["mdp"];
-								$query  = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email' AND mdp = '$mdp'");
-								$result = mysqli_fetch_row($query);
+								$query  = $connect->prepare("SELECT * FROM users WHERE email = '$email' AND mdp = '$mdp'");
+								$query->execute();
 
-								if(mysqli_num_rows($query) == 0)
+								if($query->rowCount() == 0)
 								{
 									echo "<div class='alert-danger'>Email ou mot de passe invalide!</div>";
 								}
-								else if(mysqli_num_rows($query) == 1 && $result[7] == 1)
+								else if($query->rowCount() == 1 && $result[7] == 1)
 								{
 									session_start();
 									$_SESSION["admin"]  = $email;
@@ -62,6 +63,7 @@ include "connect.php";
 				</div>
 				<div class="col-lg-6">
 				<form class="signup-form" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+					<h1>Sign Up</h1>
 					<?php 
 						if($_SERVER["REQUEST_METHOD"] === "POST")
 						{
@@ -69,7 +71,7 @@ include "connect.php";
 							$prenom = $_POST["prenom"];
 							$email  = $_POST["email"];
 							$mdp    = $_POST["mdp"];
-							$query = mysqli_query($conn, "INSERT INTO users VALUES ('','$nom','$prenom','$email','$mdp','','',0)");
+							$query = $connect->prepare("INSERT INTO users VALUES ('','$nom','$prenom','$email','$mdp','','',0)");
 							echo "<div class='alert-success'>Compte créer avec succès. Vous pouvez maintenant <a href='login.php'>S'identifier</a></div>";
 						}
 						?>

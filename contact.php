@@ -80,8 +80,9 @@ include "connect.php";
 				$sujet  = $_POST["sujet"];
 				$mail   = $_POST["email"];
 				$msg    = $_POST["message"];
-				$req = mysqli_query($conn, "INSERT INTO contact VALUES('','$nom','$prenom','$sujet','$mail','$msg')");
-				echo "<p>Votre message à été envoyée.</p>";
+				$req = $connect->prepare("INSERT INTO messages VALUES('','$nom','$prenom','$sujet','$mail','$msg')");
+				$req->execute();
+				echo "<p>Votre message à été bien envoyée.</p>";
 			}
 
 			?>
