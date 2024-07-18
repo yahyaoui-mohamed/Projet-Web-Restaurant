@@ -1,7 +1,8 @@
 <?php
 session_start();
 include "connect.php";
-$req = mysqli_query($conn,"SELECT * FROM `food`");
+$req = $connect->prepare("SELECT * FROM food");
+$req->execute();
 ?>
 
 <!DOCTYPE html>
@@ -75,15 +76,15 @@ $req = mysqli_query($conn,"SELECT * FROM `food`");
 	<div class="menu-container">
 
 			<?php 
-				while($tab = mysqli_fetch_row($req))
+				while($res = $req->fetch())
 				{
 					?>
 					<div class='menu-item'>
-						<img src='<?php echo $tab[4] ?>' alt=''>
-						<span><?php echo $tab[2]?>TND</span>
-						<h1><?php echo $tab[1] ?></h1>
-						<p><?php echo $tab[3] ?></p>
-						<input type="hidden" name="id" value="<?php echo $tab[0]?>">
+						<img src='<?php echo $res[4] ?>' alt=''>
+						<span><?php echo $res[2]?>TND</span>
+						<h1><?php echo $res[1] ?></h1>
+						<p><?php echo $res[3] ?></p>
+						<input type="hidden" name="id" value="<?php echo $res[0]?>">
 						<a href="#" id='commander' class="commande-btn" 
 							<?php if(isset($_SESSION["user"]))echo "data-login='true'"?>>
 						Commander</a>

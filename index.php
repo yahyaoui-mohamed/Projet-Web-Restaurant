@@ -1,7 +1,6 @@
 <?php
 session_start();
 include "connect.php";
-$req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +112,38 @@ $req = mysqli_query($conn,"SELECT * FROM `food` limit 0, 5");
 	<div class="repas">
 		<div class="container">
 			<h1>Nos Menus</h1>
-		</div>	
+		</div>
+		
+		<div class="container">
+			<?php
+				$req = $connect->prepare("SELECT * FROM food limit 0,6");
+				$req->execute();
+			?>
+			<div class="row">
+				<?php 
+					while($res = $req->fetch()){
+				?>
+				<div class="col-lg-4">
+					<div class="menu-item">
+						<div class="menu-img">
+							<img src="<?= $res["food_img"] ?>" alt="">
+						</div>
+						<div class="contents">
+							<div class="title">
+								<h1><?= $res["food_name"] ?></h1>
+							</div>
+							<div class="desc">
+								<p><?= $res["food_description"] ?></p>
+								<span><?= $res["food_price"] ?> TND</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php
+					}
+				?>
+			</div>
+		</div>
 	</div>
 
 	<div class="reservation text-center">
