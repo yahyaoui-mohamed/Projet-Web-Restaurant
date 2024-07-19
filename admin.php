@@ -13,6 +13,7 @@ $res = $req->fetch();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-straight/css/uicons-regular-straight.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-thin-rounded/css/uicons-thin-rounded.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -45,20 +46,45 @@ $res = $req->fetch();
 										<h1 class="title">Notifications <span>5 New</span></h1>
 										<ul>
 											<li class="notif-item">
-												<div class="row">
-													<div class="col-lg-2">
+													<div class="img">
 														<img src="./img/notif/notif1.jpg" alt="">
 													</div>
-													<div class="col-lg-10">
-														<div class="row">
-															<h4>Alex Joined the Team!</h4>
-															<p>Welcome him aboard</p>
-														</div>
+													<div class="titles">
+														<h4>Alex Joined the Team!</h4>
+														<p>Welcome him aboard</p>
 													</div>
-												</div>
-
+											</li>
+											<li class="notif-item">
+													<div class="img">
+														<img src="./img/notif/notif2.jpg" alt="">
+													</div>
+													<div class="titles">
+														<h4>Meeting Reminder</h4>
+														<p>Don’t forget the 3 PM meeting</p>
+													</div>
+											</li>
+											<li class="notif-item">
+													<div class="img">
+														<img src="./img/notif/notif3.jpg" alt="">
+													</div>
+													<div class="titles">
+														<h4>Invoice Paid</h4>
+														<p>Your invoice has been paid</p>
+													</div>
+											</li>
+											<li class="notif-item">
+													<div class="img">
+														<img src="./img/notif/notif4.jpg" alt="">
+													</div>
+													<div class="titles">
+														<h4>Sara completed tasks</h4>
+														<p>Review her work</p>
+													</div>
 											</li>
 										</ul>
+										<div class="see-all">
+											<a href="#">See All Notifications</a>
+										</div>
 								</div>
 							</div>
 						</div>
@@ -68,6 +94,14 @@ $res = $req->fetch();
 									<img src="./img/avatar.svg" alt="">
 								</div>
 								<span>Ala Yahyaoui</span>
+								<div class="profile">
+									<ul>
+										<li><i class="fi fi-rs-user"></i><a href="#">My Profile</a></li>
+										<li><i class="fi fi-rr-envelope"></i><a href="#">My Account</a></li>
+										<li><i class="fi fi-rr-settings"></i><a href="#">Parameters</a></li>
+										<li><a href="deconnect.php" class="logout">Logout</a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>

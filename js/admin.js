@@ -3,6 +3,12 @@ document.querySelector(".notif").addEventListener("click", function(){
 	target.classList.toggle("show");
 });
 
+document.querySelector(".avatar").addEventListener("click", function(){
+	console.log("clicked")
+	let target = document.querySelector(".profile");
+	target.classList.toggle("show");
+});
+
 // addEventListener("click", function(e){
 // 	let target1 = document.querySelector(".notifications");
 // 	let target2 = document.querySelector(".notif");
