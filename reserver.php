@@ -66,16 +66,47 @@ $req->execute();
 	</div>
 </nav>
 
-<div class="reserver-table">
+	<div class="reserver-table">
         <div class="overlay"></div>
         <div class="title">
             <h1>Réserver votre table</h1>
         </div>
     </div>
 
+	<div class="table-list">
+		<div class="container">
+		<?php 
+			$req = $connect->prepare("SELECT * FROM tables");
+			$req->execute();
+			while($res = $req->fetch()){
+			?>
+			<div class="table-item">
+				<div class="row">
+					<div class="col-lg-6">
+						<img src="<?= $res[4] ?>" alt="">
+					</div>
+					<div class="col-lg-6 d-flex justify-content-center align-items-center">
+						<div class="desc">
+							<h1><?= $res[1] ?></h1>
+							<p><?= $res[2] ?> Persons</p>
+							<span><?= $res[3] === 1 ? "Réservé" : "Available" ?></span>
+							<a href="#">Réserver Maintenant</a>
+						</div>
+						
+					</div>
+				</div>
 
 
-<footer>
+			</div>
+			<?php
+			}
+		?>
+		</div>
+	</div>
+
+
+
+	<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
@@ -110,11 +141,10 @@ $req->execute();
 				</div>
 			</div>
 		</div>
-		
-
-		
 	</footer>
 	<p class="copyright">Restaurant <span id="year"></span> &copy; All Right Resereved &reg;</p>
+
+
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/main.js"></script>	
 </body>
