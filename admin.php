@@ -16,6 +16,7 @@ $res = $req->fetch();
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-straight/css/uicons-regular-straight.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-thin-rounded/css/uicons-thin-rounded.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+	<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Admin Panel</title>
@@ -109,6 +110,8 @@ $res = $req->fetch();
 			</div>
 		</div>
 	</div>
+
+
     <div class="account-wrap">
         <div class="container-fluid">
             <div class="row">
@@ -176,6 +179,7 @@ $res = $req->fetch();
 							?>
 								<div class="statics">
 									<div class="container-fluid">
+										
 										<div class="row">
 											<div class="col-lg-4">
 												<div class="static-item">
@@ -200,9 +204,25 @@ $res = $req->fetch();
 													<i class="fi fi-tr-circle-user"></i>
 												</div>
 											</div>
-	
-	
 										</div>
+
+										<div class="row">
+											<div class="col-lg-8">
+												<div id="main1" style="width: 100%;height:400px;"></div>
+											</div>
+											<div class="col-lg-4">
+												<div id="main2" style="width: 100%;height:400px;"></div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-6">
+												<div id="wrapper1"></div>
+											</div>
+											<div class="col-lg-6">
+												<div id="wrapper2"></div>
+											</div>
+										</div>
+
 									</div>
 								</div>
 								<?php
@@ -210,7 +230,7 @@ $res = $req->fetch();
 				else if($_GET["tab"] === "compte")
 				{
 					?>
-                        <form class="account-form" method="POST" action="<?php echo $_SERVER["PHP_SELF"] ?>"
+                        <form class="account-form" method="POST" action=""
                             enctype="multipart/form-data">
                             <?php 
 						if($_SERVER["REQUEST_METHOD"] === "POST")
@@ -706,8 +726,6 @@ $res = $req->fetch();
 								</div>
 							</div>
 						</div>
-						
-						
 					</form>
 					<?php
 				}
@@ -721,7 +739,136 @@ $res = $req->fetch();
             </div>
         </div>
     </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 	<script src="js/admin.js"></script>
+	<script src="js/echarts.min.js"></script>
+	<script type="text/javascript">
+      // Initialize the echarts instance based on the prepared dom
+      var myChart1 = echarts.init(document.getElementById('main1'));
+      var myChart2 = echarts.init(document.getElementById('main2'));
+
+      // Specify the configuration items and data for the chart
+      var option1 = {
+        title: {
+          text: ''
+        },
+        tooltip: {},
+        
+        xAxis: {
+          data: ['Shirts', 'Cardigans', 'Chiffons', 'Pants', 'Heels', 'Socks']
+        },
+        yAxis: {},
+        series: [
+          {
+            name: 'sales',
+            type: 'line',
+            data: [5, 20, 36, 10, 10, 20],
+			smooth:true
+          }
+        ]
+      };
+
+	  var option2 = {
+		tooltip: {
+   			trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 40,
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 1048, name: 'Search Engine' },
+        { value: 735, name: 'Direct' },
+        { value: 580, name: 'Email' },
+        { value: 484, name: 'Union Ads' },
+        { value: 300, name: 'Video Ads' }
+      ]
+    }
+  ]
+};
+
+      // Display the chart using the configuration items and data just specified.
+      myChart1.setOption(option1);
+      myChart2.setOption(option2);
+	  new gridjs.Grid({
+  columns: ["Name", "Email", "Phone Number"],
+  data: [
+    ["John", "john@example.com", "(353) 01 222 3333"],
+    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
+    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
+    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"],
+  ],
+  pagination:{
+	limit: 5
+  },
+  search: true,
+  sort:true,
+  style:{
+	table:{
+		'border':'none'
+	},
+	th:{
+		'background-color' : '#fff',
+		'border':'none'
+	},
+
+  }
+}).render(document.getElementById("wrapper1"));
+
+new gridjs.Grid({
+  columns: ["Name", "Email", "Phone Number"],
+  data: [
+    ["John", "john@example.com", "(353) 01 222 3333"],
+    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
+    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
+    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
+  ],
+  pagination: {
+	limit:5
+  },
+  search: true,
+  sort:true,
+  style:{
+	table:{
+		border:'none',
+	},
+	th:{
+		'background-color' : '#fff',
+		border:'none',
+	},
+
+  }
+  
+}).render(document.getElementById("wrapper2"));
+    </script>
 </body>
 
 </html>

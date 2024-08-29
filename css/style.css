@@ -535,12 +535,15 @@ span#shop .shop-count{
 .account-wrap{
 	font-family:"Poppins";
 	background-color: #f5f6fa;
+	margin-top: 61px;
+	min-height:100vh;
 }
 
 .account-wrap .account-sidebar{
 	padding:0 20px;
 	border-right:1px solid #ccc;
 	min-height:100vh;
+	position: fixed;
 }
 
 .account-wrap .account-sidebar .account-info{
@@ -656,7 +659,7 @@ table td,table th{
 table tr:nth-child(odd)
 {
 	background-color:var(--main-color);
-	color:#fff;
+	/* color:#fff; */
 }
 
 .menu-container{
@@ -720,6 +723,7 @@ table tr:nth-child(odd)
 	color:#000;
 	position: relative;
 	background-color: #fff;
+	margin-bottom:20px;
 }
 
 .statics .static-item i{
@@ -947,6 +951,8 @@ footer .footer-item{
 .footer-item ul li{
 	margin-bottom:15px;
 	display: inline-block;
+	color:#999999;
+	font-family:Poppins;
 }
 
 .footer-item ul li a{
@@ -1369,6 +1375,11 @@ input[type=submit]:focus{
 
 .upper-nav{
 	box-shadow: rgba(21, 34, 50, 0.08) 0px 1px 4px 0px;
+	position: fixed;
+	width:100%;
+	top:0;
+	z-index:5;
+	background-color:#fff;
 }
 
 .upper-nav h1{
@@ -1534,6 +1545,8 @@ input[type=submit]:focus{
 	opacity: 0;
 	visibility: hidden;
 	z-index:5;
+	top:50px;
+	border-radius:5px;
 }
 
 .notifications .see-all{
@@ -1545,7 +1558,7 @@ input[type=submit]:focus{
 	text-decoration: none;
 	color:#e67e22;
 	border:1px solid rgb(215, 219, 236);
-	padding:10px 50px;
+	padding:10px 30px;
 	font-family:Poppins;
 	font-size:14px;
 	border-radius:5px;
@@ -1621,4 +1634,35 @@ input[type=submit]:focus{
 .show{
 	opacity: 1;
 	visibility: visible;
+}
+
+.account-wrap h1{
+	font-family:Poppins;
+	margin:30px 0;
+}
+
+#main1, #main2{
+	background-color: #fff;
+	box-shadow:0 0 11px 0px #ccc;
+	margin-bottom:20px;
+}
+
+#wrapper1, #wrapper2{
+	padding:20px;
+	box-shadow:0 0 11px 0px #ccc;
+	background-color: #fff;
+	font-family:'Poppins'
+}
+
+.social-contact ul{
+	display:flex;
+	flex-direction:row;
+}
+
+.social-contact ul li i{
+	font-size:25px;
+}
+
+.social-contact ul li{
+	margin:20px 10px;
 }

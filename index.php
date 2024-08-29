@@ -9,6 +9,7 @@ include "connect.php";
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-straight/css/uicons-regular-straight.css'>
+	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-brands/css/uicons-brands.css'>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<title>Restaurant</title>
@@ -39,7 +40,7 @@ include "connect.php";
 			</ul>
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 				<li class="nav-item">
-					<a href="login.php">
+					<a href=<?php if(isset($_SESSION["admin"])) echo "admin.php"; else echo "login.php"; ?>>
 						<i class="fi fi-rs-user"></i>
 					</a>
 				</li>
@@ -198,73 +199,116 @@ include "connect.php";
 	<div class="gallery">
 		<h1>Gallery</h1>
 		<div class="gallery-container">
-			<div class="gallery-item">
-				<div class="overlay">
-					<span>+</span>
+			
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="gallery-item">
+						<div class="overlay">
+							<span>+</span>
+						</div>
+						<img src="img/gallery/1.jpg" alt="">
+					</div>
 				</div>
-				<img src="img/gallery/1.jpg" alt="">
+				<div class="col-lg-3">
+					<div class="gallery-item">
+						<div class="overlay">
+							<span>+</span>
+						</div>
+						<img src="img/gallery/2.jpg" alt="">
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="gallery-item">
+						<div class="overlay">
+							<span>+</span>
+						</div>
+						<img src="img/gallery/3.jpg" alt="">
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="gallery-item">
+						<div class="overlay">
+							<span>+</span>
+						</div>
+						<img src="img/gallery/4.jpg" alt="">
+					</div>
+				</div>
 			</div>
-			<div class="gallery-item">
-				<div class="overlay">
-					<span>+</span>
+
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="gallery-item">
+						<div class="overlay">
+							<span>+</span>
+						</div>
+						<img src="img/gallery/5.jpg" alt="">
+					</div>
 				</div>
-				<img src="img/gallery/2.jpg" alt="">
+				<div class="col-lg-6">
+					<div class="gallery-item">
+						<div class="overlay">
+							<span>+</span>
+						</div>
+						<img src="img/gallery/6.jpg" alt="">
+					</div>
+				</div>
 			</div>
-			<div class="gallery-item">
-				<div class="overlay">
-					<span>+</span>
-				</div>
-				<img src="img/gallery/3.jpg" alt="">
-			</div>
-			<div class="gallery-item">
-				<div class="overlay">
-					<span>+</span>
-				</div>
-				<img src="img/gallery/4.jpg" alt="">
-			</div>
-			<div class="gallery-item">
-				<div class="overlay">
-					<span>+</span>
-				</div>
-				<img src="img/gallery/5.jpg" alt="">
-			</div>
-			<div class="gallery-item">
-				<div class="overlay">
-					<span>+</span>
-				</div>
-				<img src="img/gallery/6.jpg" alt="">
-			</div>		
+			
 		</div>
 	</div>
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<div class="footer-item">
 						<h3 class="title">Restaurant<span>.</span></h3>
 						<p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit.</p>
-						<div class="tel"><i class="fas fa-phone-alt"></i> +216 22000000</div>
-						<div class="email"><i class="fas fa-envelope"></i> exemple@email.com</div>
 						<div class="links">
-							<a href="#"><i class="fas fa-facebook"></i></a>
-							<a href="#"><i class="fas fa-twitter"></i></a>
-							<a href="#"><i class="fas fa-instagram"></i></a>
-							<a href="#"><i class="fas fa-youtube"></i></a>
+							<ul>
+								<li><i class="fi fi-rs-marker"></i>  8th floor, 379 Hudson St, New York, NY 10018</li>
+								<li><i class="fi fi-rs-phone-flip"></i> (+1) 96 716 6879</li>
+								<li><i class="fi fi-rs-envelope"></i>  contact@site.com</li>
+								<li></li>
+							</ul>
+							<div class="social-contact">
+								<ul>
+									<li><a href="#"><i class="fi fi-brands-facebook"></i></a></li>
+									<li><a href="#"><i class="fi fi-brands-instagram"></i></a></li>
+									<li><a href="#"><i class="fi fi-brands-twitter-alt"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4">
-				<div class="footer-item">
-					<h3 class="title">Liens utiles</h3>
-					<ul>
-						<li><i class="fas fa-chevron-right"></i><a href="index.php">Home</a></li>
-						<li><i class="fas fa-chevron-right"></i><a href="menu.php">Menu</a></li>
-						<li><i class="fas fa-chevron-right"></i><a href="about.php">About</a></li>
-						<li><i class="fas fa-chevron-right"></i><a href="contact.php">Contact</a></li>
-					</ul>
 				</div>
+
+				<div class="col-lg-3">
+					<div class="footer-item">
+						<h3 class="title">Liens utiles</h3>
+						<ul>
+							<li><i class="fas fa-chevron-right"></i><a href="index.php">Home</a></li>
+							<li><i class="fas fa-chevron-right"></i><a href="menu.php">Menu</a></li>
+							<li><i class="fas fa-chevron-right"></i><a href="about.php">About</a></li>
+							<li><i class="fas fa-chevron-right"></i><a href="contact.php">Contact</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-lg-4">
+				
+				<div class="col-lg-3">
+					<div class="footer-item">
+						<h3 class="title">Opening Hours</h3>
+						<ul>
+							<li>Monday 9:00 - 00:00</li>
+							<li>Tuesday 9:00 - 00:00</li>
+							<li>Wednesday 9:00 - 00:00</li>
+							<li>Thursday 9:00 - 00:00</li>
+							<li>Friday 9:00 - 02:00</li>
+							<li>Saturday 9:00 - 02:00</li>
+							<li>Sunday 9:00 - 02:00</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-3">
 					<div class="footer-item">
 						<div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.281964746296!2d10.565097814784021!3d36.40237279769265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd617c47ada893%3A0xa5662090817a12af!2sRestaurant%20Condor!5e0!3m2!1sfr!2stn!4v1620347748711!5m2!1sfr!2stn" width="352" height="293" style="border:0;" allowfullscreen="" loading="lazy"></iframe><a href="https://soap2day-to.com"></a><br><style>.mapouter{position:relative;text-align:right;height:293px;width:352px;}</style><a href="https://www.embedgooglemap.net">google map embed code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:293px;width:352px;}</style></div></div>
 					</div>

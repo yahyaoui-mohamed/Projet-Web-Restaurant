@@ -29,12 +29,12 @@ include "connect.php";
 								$mdp    = $_POST["mdp"];
 								$query  = $connect->prepare("SELECT * FROM users WHERE email = '$email' AND mdp = '$mdp'");
 								$query->execute();
-
+								$result = $query->fetch();
 								if($query->rowCount() == 0)
 								{
 									echo "<div class='alert-danger'>Email ou mot de passe invalide!</div>";
 								}
-								else if($query->rowCount() == 1 && $result[7] == 1)
+								else if($query->rowCount() == 1 && $result["priority"] == "1")
 								{
 									session_start();
 									$_SESSION["admin"]  = $email;
