@@ -1,0 +1,52 @@
+.contact {
+  background-image: url("../img/hero.jpg");
+  height: 80vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+
+  .title {
+    z-index: 2;
+  }
+
+  h1 {
+    font-family: Poppins;
+    font-weight: 800;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+}
+
+
+
+.contact-form {
+  margin: 30px 0;
+  font-family: Poppins;
+
+  input[type=submit] {
+    transition: .4s;
+
+    &:hover {
+      background-color: #e67e22;
+
+    }
+  }
+
+  h1 {
+    color: #e67e22;
+    font-family: "Courgette";
+    font-size: 30px;
+    font-weight: 500;
+    margin: 20px 0;
+  }
+
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+}

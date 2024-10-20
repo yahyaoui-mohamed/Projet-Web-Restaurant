@@ -1,0 +1,38 @@
+.statics {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0;
+  color: #fff;
+}
+
+.statics .static-item {
+  padding: 20px 0;
+  padding: 30px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  color: #000;
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.statics .static-item i {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  font-size: 80px;
+  opacity: .2;
+}
+
+.statics .static-item h1 {
+  font-family: Poppins;
+  font-size: 20px;
+}
+
+.statics .static-item span {
+  font-size: 30px;
+  font-family: Poppins;
+  color: rgb(90, 96, 127);
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: 5px;
+}

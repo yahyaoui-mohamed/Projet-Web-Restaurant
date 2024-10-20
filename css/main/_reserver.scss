@@ -1,0 +1,80 @@
+.reserver {
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 555;
+  text-align: center;
+  transition: .5s;
+  opacity: 0;
+  visibility: hidden;
+
+  >span {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    font-family: Raleway;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 555;
+  }
+
+  h1 {
+    font-family: Raleway;
+    margin-bottom: 80px;
+  }
+
+  .img {
+    width: 400px;
+    height: 400px;
+  }
+
+  form {
+    background-color: #fff;
+    padding: 50px 0;
+
+    div {
+      margin-bottom: 20px;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  form {
+    input {
+      outline: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 1px solid #eaeaea;
+      width: 350px;
+      font-family: Raleway;
+      transition: .3s;
+
+      &:focus {
+        border-color: var(--main-color);
+      }
+    }
+
+    input[type=date] {
+      cursor: pointer;
+    }
+
+    input[type=submit] {
+      background-color: 000;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

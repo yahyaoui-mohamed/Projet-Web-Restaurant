@@ -1,0 +1,68 @@
+.signup-form {
+  padding: 30px;
+
+  h1 {
+    font-family: Poppins;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #b5bcc7;
+    margin-bottom: 40px;
+    font-family: Poppins;
+    font-size: 14px;
+  }
+
+  div {
+    margin-bottom: 25px;
+
+    label {
+      color: #b5bcc7;
+      font-family: Poppins;
+      font-size: 14px;
+      margin-bottom: 10px;
+
+    }
+
+    input {
+      outline: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 1px solid #eaeaea;
+      width: 350px;
+      font-family: Raleway;
+      transition: .3s;
+
+      &:focus {
+        border-color: var(--main-color);
+      }
+    }
+  }
+
+  input[type=submit] {
+    background-color: #e67e22;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: .4s;
+
+    &:hover {
+      background-color: #e67e22;
+    }
+  }
+
+  .login-link {
+    margin-top: 20px;
+    color: #b5bcc7;
+    font-family: Poppins;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      color: #e67e22;
+      font-family: Poppins;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+}

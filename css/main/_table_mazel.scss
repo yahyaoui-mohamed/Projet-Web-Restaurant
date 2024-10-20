@@ -1,0 +1,146 @@
+.table {
+  img {
+    width: 50px;
+  }
+
+  thead {
+    th {
+      background-color: #f9fafc;
+      font-weight: 400;
+      text-transform: uppercase;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: Raleway;
+    }
+  }
+
+  tr {
+    font-weight: 400;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Raleway;
+    border: 1px solid #eee;
+
+    a {
+      text-decoration: none;
+      color: #e67e22;
+    }
+
+    td {
+      vertical-align: middle;
+      padding: 15px;
+
+      .confirmed {
+        background-color: #d3fdd8;
+        color: #577456;
+        font-family: Raleway;
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+
+      .not-confirmed {
+        background-color: #ffeddd;
+        color: #e67e22;
+        font-family: Raleway;
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// .table {
+//   img {
+//     width: 100px;
+//   }
+
+//   .table-item {
+//     border: 1px solid #636e72;
+//     padding: 20px;
+//   }
+
+//   .icons {
+//     a {
+//       text-decoration: none;
+//       color: #e67e22;
+//     }
+//   }
+
+//   td {
+//     vertical-align: middle;
+//   }
+// }
+
+// .table-list {
+//   padding: 60px;
+
+//   .table-item {
+//     background-color: #000;
+//     margin: 20px 0;
+
+//     img {
+//       width: 100%;
+//     }
+
+//     .desc {
+//       padding: 30px;
+//     }
+
+//     a {
+//       text-decoration: none;
+//       color: #fff;
+//       border: 1px solid #e67e22;
+//       font-family: Poppins;
+//       padding: 10px 20px;
+//       margin: 20px 0;
+//       display: inline-block;
+//       transition: .5s;
+//       box-shadow: inset 0 0 0 0 #fe5f41;
+
+//       &:hover {
+//         box-shadow: inset 400px 0 0 0 #fe5f41;
+//       }
+//     }
+//   }
+
+// }
+
+
+
+// .table-list .table-item h1,
+// .table-list .table-item p,
+// .table-list .table-item span {
+//   font-family: Poppins;
+//   color: #fff;
+//   padding: 0;
+//   font-size: 40px;
+//   display: block;
+// }
+
+// table {
+//   width: 100%;
+//   padding: 5px;
+//   text-align: center;
+
+//   td {
+//     border: 1px solid #ccc;
+//     padding: 15px 5px;
+//   }
+
+//   th {
+//     border: 1px solid #ccc;
+//     padding: 15px 5px;
+//   }
+
+//   tr {
+//     &:nth-child(odd) {
+//       background-color: var(--main-color);
+//       /* color:#fff; */
+//     }
+//   }
+// }

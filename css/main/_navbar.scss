@@ -1,0 +1,71 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 55;
+  width: 100%;
+  padding: 30px 0;
+  transition: .4s;
+
+  &.fixed {
+    padding: 10px 0;
+  }
+
+  .navbar-brand {
+    color: #fff;
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 34px;
+
+    span {
+      color: #e67e22;
+      font-weight: 800;
+    }
+  }
+
+  .account {
+    a {
+      margin: 0 5px;
+      color: #fff;
+      text-decoration: none;
+      font-family: "Raleway";
+      padding: 5px 15px;
+      border-radius: 50px;
+      position: relative;
+
+      span {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #000;
+        color: #fff;
+        top: -10px;
+        left: 30px;
+        border-radius: 50px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .nav-item {
+    margin-right: 50px;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-link {
+      color: #fff;
+      font-family: "Raleway";
+      transition: .4s;
+
+      &:hover {
+        color: #e67e22;
+      }
+    }
+  }
+}

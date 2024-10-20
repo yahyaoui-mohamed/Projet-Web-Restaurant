@@ -1,0 +1,4 @@
+cd C:\xampp\htdocs\Projet-Web-Restaurant
+
+
+sass --watch ./css/main/main.scss:./css/main.css --style compressed

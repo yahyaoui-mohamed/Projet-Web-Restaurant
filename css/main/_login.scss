@@ -1,0 +1,80 @@
+.login-form {
+  padding: 80px 30px;
+
+  h1 {
+    font-family: Poppins;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #b5bcc7;
+    margin-bottom: 40px;
+    font-family: Poppins;
+    font-size: 14px;
+  }
+
+  div {
+    label {
+      color: #b5bcc7;
+      font-family: Poppins;
+      font-size: 14px;
+      margin-bottom: 10px;
+
+    }
+
+    input[type=email],
+    input[type=password] {
+      outline: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 1px solid #eaeaea;
+      width: 100%;
+      font-family: Raleway;
+      transition: .3s;
+
+      &:focus {
+        border-color: var(--main-color);
+      }
+    }
+  }
+
+  input[type=submit] {
+    background-color: #e67e22;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .forgot-password {
+    text-decoration: none;
+    color: #b5bcc7;
+    font-family: Poppins;
+    font-size: 12px;
+  }
+
+  .signup-link {
+    margin-top: 20px;
+    color: #b5bcc7;
+    font-family: Poppins;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      color: #e67e22;
+      font-family: Poppins;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+
+  .form-check-input {
+    box-shadow: none;
+    color: #e67e22;
+  }
+
+  .form-check-label {
+    font-size: 12px;
+    margin-top: 3px;
+    margin-left: 5px;
+  }
+}
